@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Matias Grahn - Projektisivu</title>
+    <link rel ="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="script.js" defer></script>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="btn btn-navigaatio">Takaisin profiilisivulleni</a>
+        <h1>Projekti - sivu</h1>
+        <button id="theme-toggle" class="btn teemanvaihto">
+            <i id="theme-icon" class="fa-solid fa-moon"></i> Vaihda teemaa
+        </button>
+
+        <div>
+            <p class = "kuvaus">
+                    <strong>Kuvaus: </strong> Tällä sivulla löytyy tekemiäni projekteja, ja yritän aktiivesti päivitellä tätä sivua
+                    sen mukaan kuin projekteja valmistuu tai keksin ideoita.
+                </p>
+
+        </div>
+    <section id="projects">
+        <h2>Projektit</h2>
+        <div class="project-grid">
+
+            <div class="project-card">
+
+                <h3>Teollisuusdatan kerääjä & Visualisoija (Python)</h3>
+                <p>
+                    <strong>Kuvaus:</strong> Kehitin Python-sovelluksen, joka kerää teoreettisesti dataa teollisuuslaitteista Modbus TCP -protokollalla, mutta jos yhdistäminen ei onnistu niin simulointi alkaa. 
+                    Sovellus tallentaa tiedot CSV-muotoon ja visualisoi ne automaattisesti viivakaavioiksi.
+                </p>
+
+                <p class ="projekti-kuvaus">
+                    <strong>🤖 AI-yhteistyö:</strong> Projekti toteutettiin "AI-Pair Programming" -mallilla Google-Gemini. 
+                    Vastasin itse arkkitehtuurista ja virheenkorjauksesta, kun taas tekoäly avusti koodirakenteen luomisessa.
+                </p>
+                <a href="https://github.com/matiasgrahn/modbus-logger-python" class="btn projekti-nappi linkedin-nappi">
+                    <i class="fa-brands fa-github"></i>  Katso GitHubissa (Teollisuusdatan kerääjä)
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="project-grid">
+
+            <div class="project-card">
+                <h3>Kevyt ja interaktiivinen salausohjelma C++:lla.</h3>
+
+                <p>
+                    <strong>Kuvaus:</strong> Tämä projekti on luotu osoittamaan C++-ohjelmointia, Dear ImGui -käyttöliittymäsuunnittelua ja bittitason tiedostonkäsittelyä.
+                </p>
+
+                <p class="projekti-kuvaus">
+                    <strong>🤖 AI-yhteistyö:</strong> Projekti toteutettiin "AI-Pair Programming" -mallilla Google-Gemini. 
+                    Vastasin itse arkkitehtuurista ja virheenkorjauksesta, kun taas tekoäly avusti koodirakenteen luomisessa.
+                </p>
+                <a href="https://github.com/matiasgrahn/MG---Crypt---Vault" class="btn projekti-nappi linkedin-nappi">
+                <i class="fa-brands fa-github"></i>  Katso GitHubissa (Salausohjelma)
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+</body>
+</html>

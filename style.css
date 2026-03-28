@@ -1,0 +1,219 @@
+
+        /* Moderni ja selkeä tyylittely (CSS) */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f1e6d4;
+            color: #333;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            transition: background-color 0.8s ease, color 0.8s ease;
+        }
+        .container {
+            background-color: #fcfcfc;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            transition: background-color 0.8s ease, color 0.8s ease, box-shadow 0.8s ease;
+        }
+        h1 {
+            color: #000000;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            font-size: 1.2rem;
+            color: #262727;
+            margin-bottom: 30px;
+        }
+        .contact-box {
+            font-size: 1.2rem;;
+            color: #262727;
+            margin-bottom: 30px;
+        }
+        .kuvaus{
+        font-size: 1.2em;
+         background: #ffffff;
+        padding: 10px;
+        border-radius: 8px;
+        }
+        .projekti-kuvaus{
+        font-size: 0.9em;
+        background: #ffffff;
+        padding: 10px;
+        border-left: 4px solid #007bff;
+        border-radius: 8px;
+
+        }
+
+
+        .video-container video {
+    width: 100%;
+    max-width:250px; /* Tai mikä tahansa leveys mikä näyttää hyvältä */
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        .button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Rako rivien välissä */
+    width: 100%;
+    max-width: 600px; /* Hieman leveämpi, jotta kaksi nappia mahtuu rinnakkain */
+    margin: 30px auto;
+    align-items: center; /* Keskittää LinkedIn-napin */
+}
+
+/* Uusi rivi-asettelu */
+.button-row { 
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Kaksi tasakokoista saraketta */
+    gap: 10px; /* Rako nappien välissä */
+    width: 100%;
+    margin-bottom: 10px;
+}
+.teemanvaihto
+{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 30px auto;
+}
+/* Yleinen nappityyli */
+.btn {
+    display: block;
+    padding: 10px 20px;
+    color: rgb(243, 243, 243);
+    text-decoration: none;
+    text-align: center;
+    border-radius: 8px; /* Siisti, moderni pyöristys */
+    font-weight: bold;
+    font-size: 0.95rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.btn:hover {
+    transform: translateY(-2px); /* Pieni nosto-efekti */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* --- VÄRIT --- */
+
+/* Suomenkieliset (Siniset) */
+.btn-fi {
+    background-color: #989a9b;
+}
+.btn-fi:hover {
+    background-color: #b2b3b4;
+}
+
+/* Englanninkieliset (Harmaat/Hopeiset) */
+.btn-en {
+    background-color: #4d4c4c;
+}
+.btn-en:hover {
+    background-color: #3b3b3b;
+}
+
+.btn-navigaatio {
+    background-color: #e99d5f;
+    width: auto; /* LinkedIn-nappi ei vie koko leveyttä */
+    margin-bottom: 10px;
+}
+
+/* Eritystyylit LinkedIn-nappulalle */
+.projekti-nappi.linkedin-nappi {
+    background-color: #0077b5; /* Virallinen LinkedIn-sininen */
+    color: white;             /* Tekstin ja logon väri valkoiseksi */
+    border: none;
+    border-radius: 9px;             /* Poistetaan reunukset, jos niitä on */
+}
+
+/* Tyylit vain napin sisällä olevalle logolle */
+.projekti-nappi.linkedin-nappi i {
+    margin-right: 10px;       /* Väli logon ja tekstin väliin */
+    font-size: 1.2em;         /* Tehdään logosta hieman suurempi */
+}
+
+/* Hover-efekti: tummennetaan hieman, kun hiiri on päällä */
+.projekti-nappi.linkedin-nappi:hover {
+    background-color: #005582; /* Tummempi sininen */
+}
+
+/* --- TUMMAN TEEMAN TYYLIT --- */
+
+/* Koko sivun tausta ja yleisteksti */
+body.dark-theme {
+    background-color: #121212 !important;
+    color: #e0e0e0 !important;
+    
+}
+
+/* TÄRKEÄ: Muutetaan valkoinen laatikko tummanharmaaksi */
+body.dark-theme .container {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  
+}
+
+/* Otsikoiden värit tummassa tilassa */
+body.dark-theme h1, 
+body.dark-theme .subtitle, 
+body.dark-theme .contact-box,
+body.dark-theme .projects
+{
+    color: #ffffff !important;
+    
+}
+
+/* Tekstikuvaus hieman himmeämmäksi, jotta se on helppolukuinen */
+body.dark-theme .description {
+    color: #cccccc;
+    
+}
+
+/* Teemanvaihtonapin tyylittely */
+#theme-toggle {
+    cursor: pointer;
+    border: 1px solid #ccc;
+    background-color: #f8f9fa;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+body.dark-theme #theme-toggle {
+    background-color: #333;
+    border-color: #555;
+    color: #f1c40f; /* Keltainen ikoni/teksti tummassa tilassa */
+}
+
+/* Korjaus: Varmistetaan, että projektit-nappi ja muut erottuvat */
+body.dark-theme .btn-navigaatio {
+    background-color: #d8864b; /* Hieman tummempi oranssi */
+}
+
+/* Jos käytät LinkedIn-nappia, pidetään se sinisenä mutta ehkä hieman tummempana */
+body.dark-theme .linkedin-nappi {
+    background-color: #005a8a;
+}
+body.dark-theme .kuvaus {
+    background-color:#333
+    }
+body.dark-theme .projekti-kuvaus {
+    background-color: #333;
+}
