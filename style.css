@@ -225,3 +225,82 @@ body.dark-theme .kuvaus {
 body.dark-theme .projekti-kuvaus {
     background-color: #333;
 }
+.skill-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin: 20px 0;
+
+}
+
+.skill-sphere {
+  position: relative; /* Tärkeä: popup sijoittuu suhteessa tähän */
+  width: 50px;
+  height: 50px;
+  background: #007bff; /* Sininen väri, voit vaihtaa */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.skill-sphere:hover {
+  transform: scale(1.1);
+}
+
+/* Piilotettu popup-ikkuna */
+.skill-popup {
+  position: absolute;
+  bottom: 80px; /* Nousee pallon yläpuolelle */
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  width: 200px;
+  background: #333;
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  
+  /* Piilotusasetukset */
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  pointer-events: none; /* Estää hiirtä "osumasta" popupiin vahingossa */
+}
+
+/* Popupin "nuoli" alaspäin */
+.skill-popup::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 8px;
+  border-style: solid;
+  border-color: #333 transparent transparent transparent;
+}
+
+/* Näytetään popup, kun hiiri on pallon päällä */
+.skill-sphere:hover .skill-popup {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+.skill-sphere:nth-child(1){
+    background-color: #279b10ee;
+}
+.skill-sphere:nth-child(2){
+    background-color: #f0432c;
+}
+.skill-sphere:nth-child(3){
+    background-color: #1086d4;
+}
+
+
+
