@@ -30,6 +30,8 @@
             width: 100%;
             text-align: center;
             transition: background-color 0.8s ease, color 0.8s ease, box-shadow 0.8s ease;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12); /* Pehmeämpi ja syvempi varjo */
+            border: 1px solid rgba(0, 0, 0, 0.05); /* Erittäin hienovaraisreuna korostaa varjoa */
         }
         h1 {
             color: #000000;
@@ -55,24 +57,95 @@
         font-size: 0.9em;
         background: #ffffff;
         padding: 10px;
-        border-left: 4px solid #007bff;
+        border-left: 4px solid #e99d5f;
         border-radius: 8px;
+        }
+        body.dark-theme .projekti-kuvaus{
+        border-left: 4px solid #0077b5;    
         }
 
         .video-container video {
-    width: 100%;
-    max-width:250px; /* Tai mikä tahansa leveys mikä näyttää hyvältä */
-    height: auto;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width:250px; /* Tai mikä tahansa leveys mikä näyttää hyvältä */
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
         .description {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 30px;
-            text-align: left;
+                    font-size: 1.1rem;
+                    line-height: 1.6;
+                    margin-bottom: 30px;
+                    text-align: left;
         }
-        .button-container {
+
+        .project-card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 40px; /* Väli seuraavaan korttiin */
+    border: 1px solid #eee;
+    transition: transform 0.3s ease;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f0f0f0;
+        }
+        .project-card:hover {
+        transform: translateY(-5px); /* Nousee hieman, kun hiiri on päällä */
+         box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1)
+        }
+        body.dark-theme .project-card {
+        background: #252525;
+        border-color: #333;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+        .project-grid {
+        border-left: 3px solid #e99d5f; /* Sama oranssi kuin navigaationapissa */
+        padding-left: 20px;
+        margin-left: 10px;
+        }
+        .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Keskittää tägit kortissa */
+    gap: 10px;
+    margin: 15px 0;
+        }
+        body.dark-theme .project-grid{
+        border-left: 3px solid #0077b5;    
+        }
+
+        .tag {
+            background-color: #e9ecef; /* Vaaleanharmaa tausta */
+            color: #495057;           /* Tummanharmaa teksti */
+            padding: 5px 12px;
+            border-radius: 20px;      /* Tekee pillerin muotoisen */
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid #dee2e6;
+            transition: all 0.3s ease;
+        }
+
+        /* Tehdään tägeistä hieman erottuvampia, kun hiiri menee päälle */
+        .tag:hover {
+            background-color: #e99d5f;
+            color: white;
+        }
+
+        /* Tumman teeman tuki tägeille */
+        body.dark-theme .tag {
+            background-color: #333;
+            color: #ddd;
+            border-color: #444;
+        }
+
+        body.dark-theme .tag:hover {
+            background-color: #007bff; /* Käytetään oranssia korostusta tummassa teemassa */
+            color: #000;
+        }
+    
+
+
+
+.button-container {
     display: flex;
     flex-direction: column;
     gap: 15px; /* Rako rivien välissä */
@@ -117,7 +190,7 @@
     box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
-/* --- VÄRIT --- */
+/* --- NAPIT --- */
 
 /* Suomenkieliset (Siniset) */
 .btn-fi {
@@ -159,7 +232,7 @@
 .projekti-nappi.linkedin-nappi:hover {
     background-color: #005582; /* Tummempi sininen */
 }
-
+/* NAPIT LOPPU*/
 /* --- TUMMAN TEEMAN TYYLIT --- */
 
 /* Koko sivun tausta ja yleisteksti */
