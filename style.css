@@ -67,11 +67,11 @@ h2 { margin: 20px 0; }
 
 /* --- 3. PROJEKTIKORTIT & TÄGIT --- */
 .project-grid {
-    border-left: 3px solid #e99d5f;
-    padding-left: 20px;
-    margin: 20px 0 20px 10px;
+   padding-left: 20px;
+    padding-right: 20px; /* Lisätään tämä tasapainottamaan */
+    margin: 20px auto;   /* Keskittää elementin containerin sisällä */
+    max-width: 100%;     /* Varmistaa, ettei se karkaa reunojen yli */
 }
-
 .project-card {
     background: #ffffff;
     padding: 30px;
@@ -81,9 +81,12 @@ h2 { margin: 20px 0; }
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-align: left; /* Muutettu vasemmalle luettavuuden vuoksi */
-    border-left: 3px solid #e99d5f;
+    border-left: 4px solid #e99d5f;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 700px;
 }
-
 .project-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
@@ -228,46 +231,64 @@ body.dark-theme .project-card { background: #252525; border-color: #333; border-
 body.dark-theme .projekti-kuvaus { background: #333; border-left: 4px solid #0077b5}
 body.dark-theme .tag { background: #333; color: #ddd; border-color: #444; }
 body.dark-theme .tag:hover {background:#0077b5 }
-body.dark-theme .project-grid { border-left: 3px solid #0077b5 !important;}
 body.dark-theme .subtitle{ color: #ffffff;}
 body.dark-theme .teemanvaihto{ background-color: #f1c40f !important; color: #000000 !important; }
 body.dark-theme .teemanvaihto:hover {background-color: #d4ac0d !important;}
 body.dark-theme .info-card {background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.1);
 }
 
-/* --- 8. MOBIILIOPTIMOINTI --- */
+/* --- 8. MOBIILIOPTIMOINTI (Päivitetty) --- */
 @media (max-width: 600px) {
     body {
-        padding: 10px; /* Vähemmän tyhjää reunoille */
+        padding: 10px;
     }
 
     .container {
-        padding: 20px 15px; /* Pienennetään sisämarginaalia */
+        padding: 25px 15px; /* Hieman enemmän tilaa ylhäällä kuin sivuilla */
         width: 100%;
-        border-radius: 0; /* Puhelimella suorat kulmat näyttävät usein paremmalta */
+        border-radius: 0; 
     }
 
-    h1 {
-        font-size: 1.8rem; /* Pienennetään otsikkoa, jotta se ei rivity huonosti */
-    }
+    /* Pienennetään otsikoita, jotta ne eivät rivity rumasti */
+    h1 { font-size: 1.6rem; }
+    .subtitle { font-size: 1rem; }
 
-    .project-card {
-        padding: 20px;
-        margin-bottom: 20px;
-    }
-
-    .project-grid {
-        border-left: none; /* Poistetaan sivuviva mobiilissa tilan säästämiseksi */
-        padding-left: 0;
-        margin-left: 0;
-    }
-
+    /* Taitopallerot (Skill Spheres) mobiilissa */
     .skill-container {
-        flex-wrap: wrap; /* Pallerot tippuvat nätisti usealle riville */
+        flex-direction: column; /* Pallerot allekkain */
+        align-items: center;
         gap: 15px;
     }
 
+    .skill-sphere {
+        width: 50px;
+        height: 50px;
+    }
+
+    /* Info-kortti (missä pallerot ovat) */
+    .info-card {
+        padding: 15px;
+    }
+
+    /* Napit allekkain */
     .button-row {
-        grid-template-columns: 1fr; /* Napit allekkain rinnakkain sijaan */
+        grid-template-columns: 1fr; /* Pakotetaan yksi sarake */
+        gap: 10px;
+    }
+
+    .btn {
+        width: 100%; /* Napit täyttävät koko leveyden */
+        padding: 15px;
+        font-size: 0.95rem;
+    }
+
+    /* Projektikortit ja tekstit */
+    .project-card {
+        padding: 20px;
+    }
+
+    .description {
+        font-size: 1rem;
+        text-align: left; /* Pidetään teksti luettavana */
     }
 }
