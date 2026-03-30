@@ -162,6 +162,8 @@ h2 { margin: 20px 0; }
 .btn-navigaatio { background-color: #e99d5f; margin-bottom: 20px; }
 .btn-fi { background-color: #6c757d; }
 .btn-en { background-color: #4d4c4c; }
+.btn-fi i{border-radius: 40%; object-fit: cover;}
+.btn-en i{border-radius: 40%; } 
 
 .linkedin-nappi {
     background-color: #0077b5;
