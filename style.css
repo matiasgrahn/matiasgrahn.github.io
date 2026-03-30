@@ -255,7 +255,7 @@ body.dark-theme .info-card {background: rgba(255, 255, 255, 0.05); border-color:
 
     /* Taitopallerot (Skill Spheres) mobiilissa */
     .skill-container {
-        flex-direction: column; /* Pallerot allekkain */
+         /* Pallerot allekkain */
         align-items: center;
         gap: 15px;
     }
@@ -281,7 +281,11 @@ body.dark-theme .info-card {background: rgba(255, 255, 255, 0.05); border-color:
         padding: 15px;
         font-size: 0.95rem;
     }
-
+    .project-grid {
+        width: 100%;
+        padding-left: 1px;
+        padding-right: 1px;
+    }
     /* Projektikortit ja tekstit */
     .project-card {
         padding: 20px;
