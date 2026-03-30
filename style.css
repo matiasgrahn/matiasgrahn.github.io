@@ -4,7 +4,13 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+header{margin-bottom: 20px;}
+.info-card {
+    background: rgba(255, 255, 255, 0.5); /* Kevyt tausta palloille */
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+}
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f1e6d4;
@@ -17,6 +23,20 @@ body {
     opacity: 0;
     transition: opacity 0.6s ease-in, background-color 0.5s ease;
 }
+.main-cta {
+    font-size: 1.1rem;
+    padding: 18px !important;
+    width: 100%;
+    margin-top: 10px;
+    letter-spacing: 1px;
+    box-shadow: 0 5px 15px rgba(233, 157, 95, 0.3);
+}
+
+.video-section { margin-bottom: 30px;}
+
+.description p { margin-bottom: 15px; /* Korvataan <br> tägitarve */}
+
+.description p:last-child { margin-bottom: 0;}
 
 body.fade-in { opacity: 1; }
 body.fade-out { opacity: 0; }
@@ -61,6 +81,7 @@ h2 { margin: 20px 0; }
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-align: left; /* Muutettu vasemmalle luettavuuden vuoksi */
+    border-left: 3px solid #e99d5f;
 }
 
 .project-card:hover {
@@ -203,7 +224,7 @@ h2 { margin: 20px 0; }
 body.dark-theme { background-color: #121212; color: #e0e0e0; }
 body.dark-theme .container { background-color: #1e1e1e; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
 body.dark-theme h1, body.dark-theme h2 { color: #fff; }
-body.dark-theme .project-card { background: #252525; border-color: #333; }
+body.dark-theme .project-card { background: #252525; border-color: #333; border-left: 3px solid #0077b5; }
 body.dark-theme .projekti-kuvaus { background: #333; border-left: 4px solid #0077b5}
 body.dark-theme .tag { background: #333; color: #ddd; border-color: #444; }
 body.dark-theme .tag:hover {background:#0077b5 }
@@ -211,6 +232,8 @@ body.dark-theme .project-grid { border-left: 3px solid #0077b5 !important;}
 body.dark-theme .subtitle{ color: #ffffff;}
 body.dark-theme .teemanvaihto{ background-color: #f1c40f !important; color: #000000 !important; }
 body.dark-theme .teemanvaihto:hover {background-color: #d4ac0d !important;}
+body.dark-theme .info-card {background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.1);
+}
 
 /* --- 8. MOBIILIOPTIMOINTI --- */
 @media (max-width: 600px) {
