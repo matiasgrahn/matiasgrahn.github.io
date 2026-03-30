@@ -238,13 +238,13 @@ body.dark-theme .info-card {background: rgba(255, 255, 255, 0.05); border-color:
 }
 
 /* --- 8. MOBIILIOPTIMOINTI (Päivitetty) --- */
-@media (max-width: 500px) {
+@media (max-width: 600px) {
     body {
-        padding: 10px;
+        padding: 0 !important;
     }
 
     .container {
-        padding: 25px 15px; /* Hieman enemmän tilaa ylhäällä kuin sivuilla */
+        padding: 15px 10px; /* Hieman enemmän tilaa ylhäällä kuin sivuilla */
         width: 100%;
         border-radius: 0; 
     }
@@ -288,7 +288,7 @@ body.dark-theme .info-card {background: rgba(255, 255, 255, 0.05); border-color:
     }
     /* Projektikortit ja tekstit */
     .project-card {
-        padding: 20px;
+        padding: 15px !important;
     }
 
     .description {
