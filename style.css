@@ -238,7 +238,7 @@ body.dark-theme .info-card {background: rgba(255, 255, 255, 0.05); border-color:
 }
 
 /* --- 8. MOBIILIOPTIMOINTI (Päivitetty) --- */
-@media (max-width: 600px) {
+@media (max-width: 500px) {
     body {
         padding: 10px;
     }
