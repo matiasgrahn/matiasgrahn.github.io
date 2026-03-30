@@ -48,3 +48,16 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+// 4. Korjaus "takaisin-nappiin" ja swaippaamiseen
+window.addEventListener('pageshow', (event) => {
+    // Jos event.persisted on true, sivu ladattiin selaimen välimuistista (back-button)
+    if (event.persisted) {
+        // Poistetaan mahdolliset fade-out luokat ja varmistetaan näkyvyys
+        document.body.classList.remove('fade-out');
+        document.body.classList.add('fade-in');
+        
+        // Jos haluat pakottaa täyden uudelleenlatauksen:
+        // window.location.reload(); 
+    }
+});
