@@ -178,7 +178,19 @@ h2 { margin: 20px 0; }
     gap: 10px;
     margin-bottom: 10px;
 }
+.btn-group {
+    display: flex;
+    gap: 10px; /* Väli nappien välillä */
+    flex-wrap: wrap; /* Tiputtaa napit allekkain puhelimella */
+    margin-top: 15px;
+}
 
+.btn-group .btn {
+    flex: 1; /* Tekee napeista samanlevuiset */
+    min-width: 200px; /* Estää nappeja menemästä liian kapeiksi */
+    text-align: center;
+    justify-content: center;
+}
 /* --- 5. TAITOPALLEROT (SKILL SPHERES) --- */
 .skill-container { display: flex; justify-content: center; gap: 30px; margin: 20px 0; }
 
