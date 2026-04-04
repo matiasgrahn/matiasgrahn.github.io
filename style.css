@@ -66,27 +66,32 @@ h2 { margin: 20px 0; }
 }
 
 /* --- 3. PROJEKTIKORTIT & TÄGIT --- */
-.project-grid {
-   padding-left: 20px;
-    padding-right: 20px; /* Lisätään tämä tasapainottamaan */
-    margin: 20px auto;   /* Keskittää elementin containerin sisällä */
-    max-width: 100%;     /* Varmistaa, ettei se karkaa reunojen yli */
+.projects-wrapper {
+    display: grid;
+    /* Luo sarakkeita, jotka ovat vähintään 320px leveitä. 
+       'auto-fit' täyttää rivin automaattisesti sarakkeilla. */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px; /* Väli korttien välille */
+    width: 100%;
+    max-width: 1200px; /* Estetään liian leveäksi venyminen isoilla näytöillä */
+    margin: 30px auto;
 }
+
 .project-card {
     background: #ffffff;
-    padding: 30px;
-    border-radius: 15px;
-    margin-bottom: 40px;
-    border: 1px solid #f0f0f0;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pitää napit kortin alareunassa */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-align: left; /* Muutettu vasemmalle luettavuuden vuoksi */
-    border-left: 4px solid #e99d5f;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-    max-width: 700px;
+    text-align: left;
+    height: 100%; /* Kortit ovat saman korkuisia */
+    border-left: 3px solid #e99d5f;
 }
+
 .project-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
@@ -102,21 +107,19 @@ h2 { margin: 20px 0; }
 }
 
 .project-tags {
+    margin: 15px 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-    margin: 15px 0;
+    gap: 8px;
 }
 
 .tag {
-    background-color: #e9ecef;
-    color: #495057;
-    padding: 5px 12px;
+    background: #f1e6d4;
+    color: #333;
+    padding: 4px 10px;
     border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    border: 1px solid #dee2e6;
-    transition: all 0.3s ease;
+    font-size: 0.85rem;
+    font-weight: bold;
 }
 
 .tag:hover {
@@ -251,8 +254,77 @@ body.dark-theme .teemanvaihto:hover {background-color: #d4ac0d !important;}
 body.dark-theme .info-card {background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.1);
 }
 
-/* --- 8. MOBIILIOPTIMOINTI (Päivitetty) --- */
-@media (max-width: 600px) {
+/* --- PS1 - tyylit --- */
+.code-viewer-container {
+    background-color: #1e1e1e; /* VS Code tumma tausta */
+    border-radius: 10px;
+    border: 1px solid #333;
+    overflow: hidden;
+    margin-top: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.code-header {
+    background-color: #2d2d2d;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #3e3e3e;
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.code-viewer-container pre {
+    padding: 20px;
+    overflow-x: auto;
+    color: #d4d4d4;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    text-align: left;
+}
+
+.ps-comment { color: #6a9955; font-style: italic; } /* Vihreä kommentti */
+.ps-command { color: #569cd6; font-weight: bold; } /* Sininen komento */
+.ps-variable { color: #9cdcfe; }                  /* Vaaleansininen muuttuja */
+.ps-string { color: #ce9178; }                    /* Ruskehtava teksti */
+
+.copy-btn {
+    background: #e99d5f;
+    border: none;
+    color: rgb(160, 14, 14);
+    padding: 5px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: 0.3s;
+}
+
+.copy-btn:hover {
+    background: #d48c4f;
+}
+.code-viewer-container pre {
+    padding: 20px;
+    margin: 0;
+    
+    /* Tämä on tärkein: sallii skrollauksen sivusuunnassa jos koodi on liian leveää */
+    overflow-x: auto; 
+    
+    /* Parantaa skrollauksen sujuvuutta kosketusnäytöillä */
+    -webkit-overflow-scrolling: touch; 
+    
+    /* Varmistaa, että pitkät sanat (kuten polut) eivät pakota laatikkoa leveäksi */
+    word-wrap: normal;
+    white-space: pre; 
+    
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+
+/* --- 9. MOBIILIOPTIMOINTI (Päivitetty) --- */
+@media (max-width: 800px) {
     body {
         padding: 0 !important;
     }
@@ -295,18 +367,59 @@ body.dark-theme .info-card {background: rgba(255, 255, 255, 0.05); border-color:
         padding: 15px;
         font-size: 0.95rem;
     }
-    .project-grid {
-        width: 100%;
-        padding-left: 1px;
-        padding-right: 1px;
-    }
     /* Projektikortit ja tekstit */
+    .projects-wrapper {
+        /* Pakotetaan kaksi saraketta vielä kapeammallakin näytöllä */
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 10px;
+    }
+    .project-card h3 {
+        font-size: 0.95rem; /* Pienempi otsikko mahtuu yhdelle riville */
+    }
     .project-card {
-        padding: 15px !important;
+        padding: 10px !important;
+        font-size: 0.8rem; /* Pienempi teksti estää korttia venymästä liikaa */
+    }
+    .tag {
+        font-size: 0.7rem; /* Pienemmät tagit */
+        padding: 2px 6px;
     }
 
     .description {
         font-size: 1rem;
         text-align: left; /* Pidetään teksti luettavana */
     }
+
+    .linkedin-nappi {
+        padding: 5px 10px !important; /* Vähemmän tyhjää tilaa napin sisällä */
+        font-size: 0.8rem !important;  /* Pienempi teksti */
+        min-height: auto !important;   /* Varmistetaan, ettei nappi pakota korkeutta */
+        margin-top: 10px;              /* Sopiva väli yläpuolella olevaan tekstiin */
+        width: 100%;                   /* Nappi täyttää silti kortin leveyden */
+        text-align: center;
+    }
+
+    /* Jos käytät ikoneita nappien sisällä, pienennetään niitäkin */
+    .linkedin-nappi i {
+        font-size: 0.85rem;
+        margin-right: 5px;
+    }
+
+/* Powershell.html skaalausta mobiilille */
+    .code-viewer-container pre {
+        font-size: 0.75rem; /* Pienempi fontti mahtuu paremmin */
+        padding: 15px;
+    }
+    
+    .code-header {
+        font-size: 0.8rem;
+        padding: 8px 12px;
+    }
+
+    .copy-btn {
+        padding: 4px 8px;
+        font-size: 0.7rem;
+    }
+
+
 }
