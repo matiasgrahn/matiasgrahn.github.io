@@ -55,8 +55,9 @@
 
 <span class="ps-comment"># Verkkotesti</span>
 <span class="ps-command">Write-Host</span> <span class="ps-string">" Verkkoyhteys (Ping-testi):"</span> -ForegroundColor Cyan
-<span class="ps-variable">$IP</span> = (<span class="ps-command">Get-NetIPAddress</span> -AddressFamily IPv4 | <span class="ps-command">Where-Object</span> { <span class="ps-variable">$_</span>.InterfaceAlias -notlike
-<span class="ps-string">"*Loopback*"</span> }).IPAddress[0]
+<span class="ps-variable">$IP</span> = (<span class="ps-command">Get-NetIPAddress</span> -InterfaceAlias <span class="ps-string">"Ethernet 4"</span> -AddressFamily IPv4 |
+<span class="ps-command">Select-Object</span> -ExpandProperty IPAddress)
+
 <span class="ps-command">Write-Host</span> <span class="ps-string">" Sisainen IP:       $IP"</span>
 
 <span class="ps-command">ping.exe</span> 8.8.8.8 -n 1 | <span class="ps-command">Out-Null</span>
