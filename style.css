@@ -34,6 +34,17 @@ body {
 
 .video-section { margin-bottom: 30px;}
 
+.video-container video{
+    width: 100%;
+    max-width: 350px; /* Voit säätää tätä, jotta pystyvideo ei ole jättimäinen koneella */
+    height: auto;     /* Tämä poistaa mustat palkit ylä- ja alapuolelta/sivuilta */
+    display: block;
+    margin: 0 auto;   /* Keskittää videon */
+    border-radius: 12px; /* Tekee kulmista nätin pyöreät */
+    background-color: transparent; /* Varmistaa, ettei tausta paista läpi mustana */
+
+}
+
 .description p { margin-bottom: 15px; /* Korvataan <br> tägitarve */}
 
 .description p:last-child { margin-bottom: 0;}
