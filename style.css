@@ -871,6 +871,10 @@ section {
         transform: scale(0.85); /* Hieman pienempi mobiilissa */
     }
 
+    .scroll-arrow {
+        opacity: 0;
+    }
+
     /* MOBIILITIOPTIMOINNIT VIIMEISELLE SIVULLE */
      .doc-columns-wrapper {
         flex-direction: column;
