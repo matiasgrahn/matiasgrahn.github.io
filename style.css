@@ -362,7 +362,7 @@ section {
     display: inline-block;
     margin-top: 20px;
     padding: 12px 25px;
-    background-color: #0b0f14;
+    background-color: #70593e;
     background-image: 
         radial-gradient(at 25% 100%, rgba(0, 118, 181, 0.452) 0px, transparent 50%),
         radial-gradient(at 100% 25%, rgba(204, 255, 0, 0.274) 0px, transparent 50%);
@@ -376,7 +376,7 @@ section {
 }
 
 .video-btn:hover {
-    background-color: #0b0f14;
+    background-color: #ddc29f;
     background-image: 
         radial-gradient(at 0% 100%, rgba(0, 119, 181, 0.15) 0px, transparent 50%),
         radial-gradient(at 100% 0%, rgba(204, 255, 0, 0.08) 0px, transparent 50%);
@@ -393,6 +393,7 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
+  
 }
 
 .video-content {
@@ -464,7 +465,13 @@ section {
             radial-gradient(at 0% 100%, rgba(0, 119, 181, 0.15) 0px, transparent 50%),
             radial-gradient(at 100% 0%, rgba(204, 255, 0, 0.08) 0px, transparent 50%);   
     }
-    body.dark-theme .profile-pic { border: 4px solid #0077b5;}     
+    body.dark-theme .profile-pic { border: 4px solid #0077b5;}
+    body.dark-theme .video-btn {
+        background-color: #0b0f14;
+        background-image: 
+            radial-gradient(at 0% 100%, rgba(0, 119, 181, 0.15) 0px, transparent 50%),
+            radial-gradient(at 100% 60%, rgba(204, 255, 0, 0.08) 0px, transparent 50%); 
+    }     
 
     /* ==========================================================================
    10. NUOLINAPPULA ALASPÄIN, DARK MODE KYTKIN JA SIIRTYMÄT
@@ -924,7 +931,6 @@ section {
         right: 0;
         font-size: 30px;
     }
-    
 
 }
 
