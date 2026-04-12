@@ -10,16 +10,79 @@
     <script src="script.js" defer></script>
 </head>
 <body>
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div> 
+    
     <div class="container">
+        <nav class="top-nav">
+        <div class="nav-container">
+
+            <div class="nav-links">
+                <a href="#aloitus">Aloitus</a>
+                <a href="#profiili">Profiili</a>
+                <a href="#projektit">Projektit</a>
+                <a href="#dokumentit">Dokumentit ja Ota Yhteyttä</a>
+            </div>
+
+            <div class="theme-switch-wrapper">
+                <input type="checkbox" id="theme-toggle" class="theme-checkbox">
+                <label for="theme-toggle" class="theme-slider">
+                <span class="slider-ball"></span>
+                </label>
+            </div>
+
+            <div class="nav-right">
+                <span class="top-name-label">MATIAS GRAHN</span>
+            </div>
+        </div>
+    </nav>
+    <!-- SIVU 1 ALKAA TÄSTÄ  -->
+    <section id="aloitus" class="full-page">
+        
         <header>
             <h1>Matias Grahn</h1>
             <p class="subtitle">IT-insinööriopiskelija | Tekniikan moniosaaja</p>
-            <button id="theme-toggle" class="btn teemanvaihto">
-                <i id="theme-icon" class="fa-solid fa-moon"></i> Vaihda teemaa
-            </button>
         </header>
 
-        <section class="info-card">
+        <div class="profile-header">
+        <div class="profile-pic-container">
+            <img src="profiilikuva.jpg" alt="Matias Grahn" class="profile-pic">
+        </div>
+        <a href="#video-esittely" class="btn video-btn" id="play-video-btn">
+            <i class="fa-solid fa-play"></i> Katso esittelyvideo
+        </a>
+
+        <a href="#profiili" class="scroll-down">
+            <div class="scroll-arrow">
+                <i class="fa-solid fa-chevron-down"></i> </div>
+        </a>
+
+        <div id="video-container" class="video-modal"  style="display: none;">
+    <div class="video-content">
+        <span class="close-video">&times;</span>
+        <video id="esittelyvideo" controls>
+            <source src="esittelyvideo_edited_compressed.mp4" type="video/mp4">
+            Selaimesi ei tue videota.
+        </video>
+    </div>
+        
+    </section>
+
+    <!-- SIVU 2 ALKAA TÄSTÄ -->
+    <section id="profiili" class="full-page">
+        <h2>Tietoa minusta</h2>
+        <div class="info-card">
+
+            
+            <div class="description">
+                <p>Tervetuloa profiilisivulleni! Olen loppusuoran IT-insinööriopiskelija, jolla on vahva käytännön tekninen tausta.</p>
+                <p>Erikoisosaamiseni ydin sijoittuu <strong>tietotekniikan, järjestelmätekniikan ja fyysisen teknologian risteyskohtaan</strong>. Viimeistelen parhaillaan opinnäytetyötäni teollisuusväylien (Modbus/CAN-bus) kyberturvallisuudesta. Tekninen taustani ja kokemukseni fyysisistä laitteistoista antavat minulle vahvan ymmärryksen monimutkaisista kokonaisuuksista.</p>
+                <p>Etsin haastavaa työtä, jossa voin hyödyntää analyyttistä ongelmanratkaisukykyäni ja taitoani tarttua monipuolisiin teknisiin tehtäviin tehokkaasti.</p>
+            </div>
+    
+
+          
+                <section class="info-card">
             <div class="skill-container">
                 <div class="skill-sphere">
                     <span class="skill-icon"><i class="fa-solid fa-microchip"></i></span>
@@ -43,44 +106,191 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section>  
+        </div>
+        <a href="#projektit" class="scroll-down">
+            <div class="scroll-arrow">
+                <i class="fa-solid fa-chevron-down"></i> </div>
+        </a>     
+    </section>
 
-        <section class="video-section">
-            <div class="video-container">
-                <video controls poster="videon-kansi.jpg">
-                    <source src="esittelyvideo_edited_compressed.mp4" type="video/mp4">
-                    Selaimesi ei tue videon toistoa.
-                </video>
+
+
+
+    <!-- SIVU 3 ALKAA TÄSTÄ -->
+    <section id="projektit" class="full-page">
+        <h2>Projektit</h2>
+        <div>
+            <p class = "kuvaus">
+                    <strong>Kuvaus: </strong> Tällä sivulla löytyy tekemiäni projekteja, ja yritän aktiivesti päivitellä tätä sivua
+                    sen mukaan kuin projekteja valmistuu tai keksin ideoita.
+                </p>
+        </div>
+        <div class="projects-wrapper">
+            <div class="project-card">
+            <div>
+                <h3>PowerShell Diagnostiikka</h3>
+                <p><strong>Kuvaus:</strong> Automatisoitu vianmääritystyökalu IT-tuen avuksi. Hakee Uptimen, päivitystilanteen ja verkkoyhteyden yhdellä ajolla.</p>
+                <div class="project-tags">
+                    <span class="tag">PowerShell</span>
+                    <span class="tag">Automation</span>
+                    <span class="tag">IT-tuki</span>
+                </div>
             </div>
-        </section>
+            <a href="powershell.html" class="btn linkedin-nappi">Katso koodi</a>
+        </div>
 
-        <section class="project-card">
-            <div class="description">
-                <p>Tervetuloa profiilisivulleni! Olen loppusuoran IT-insinööriopiskelija, jolla on vahva käytännön tekninen tausta.</p>
-                <p>Erikoisosaamiseni ydin sijoittuu <strong>tietotekniikan, järjestelmätekniikan ja fyysisen teknologian risteyskohtaan</strong>. Viimeistelen parhaillaan opinnäytetyötäni teollisuusväylien (Modbus/CAN-bus) kyberturvallisuudesta. Tekninen taustani ja kokemukseni fyysisistä laitteistoista antavat minulle vahvan ymmärryksen monimutkaisista kokonaisuuksista.</p>
-                <p>Etsin haastavaa työtä, jossa voin hyödyntää analyyttistä ongelmanratkaisukykyäni ja taitoani tarttua monipuolisiin teknisiin tehtäviin tehokkaasti.</p>
+        <div class="project-card">
+            <div>
+                <h3>Windows Server Lab</h3>
+                <p><strong>Kuvaus:</strong> Windows Server 2022 -ympäristön pystytys, Active Directoryn hallinta ja GPO-käytäntöjen määrittely.</p>
+                <div class="project-tags">
+                    <span class="tag">AD DS</span>
+                    <span class="tag">Windows Server 2022</span>
+                    <span class="tag">Networking</span>
+                </div>
             </div>
-        </section>
+            <a href="https://github.com/matiasgrahn/AD-DS-Lab" class="btn linkedin-nappi"><i class="fa-brands fa-github"></i> GitHub</a>
+        </div>
 
-        <nav class="btn-container">
-            <a href="projektit.html" class="btn btn-navigaatio main-cta">
-                <i class="fa-solid fa-folder-open"></i> TUTUSTU PROJEKTEIHINI
+        <div class="project-card">
+            <div>
+                <h3>C++ Crypt Vault</h3>
+                <p><strong>Kuvaus:</strong> Dear ImGui -pohjainen graafinen käyttöliittymä ja bittitason tiedostonkäsittely salausta varten.</p>
+                <div class="project-tags">
+                    <span class="tag">C++</span>
+                    <span class="tag">UI</span>
+                    <span class="tag">Security</span>
+                </div>
+            </div>
+            <a href="https://github.com/matiasgrahn/MG---Crypt---Vault" class="btn linkedin-nappi"> <i class="fa-brands fa-github"></i> GitHub</a>
+        </div>
+
+        <div class="project-card">
+            <div>
+                <h3>Teollisuusdatan kerääjä & Visualisoija (Python)</h3>
+                <p><strong>Kuvaus:</strong>Kehitin Python-sovelluksen, joka kerää teoreettisesti dataa teollisuuslaitteista Modbus TCP-protokollalla.</p>
+                <div class="project-tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">Modbus</span>
+                    <span class="tag">Teollisuus</span>
+                </div>
+            </div>
+            <a href="https://github.com/matiasgrahn/modbus-logger-python" class="btn linkedin-nappi"> <i class="fa-brands fa-github"></i> GitHub</a>
+        </div>
+
+         <div class="project-card">
+            <div>
+                <h3>Porfolio - sivu</h3>
+                <p><strong>Kuvaus:</strong> 
+                    Tavoitteenani on pitää portfolio elävänä dokumenttina taidoistani ja kokeilla käytännössä, 
+                    miten eri komponentit ja rajapinnat saadaan toimimaan saumattomasti yhteen.</p>
+                <div class="project-tags">
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">Javascript</span>
+                </div>
+            </div>
+            <a href="https://github.com/matiasgrahn/matiasgrahn.github.io" class="btn linkedin-nappi"> <i class="fa-brands fa-github"></i> GitHub</a>
+        </div>
+
+          <div class="project-card">
+            <div>
+                <h3>Microsoft Entra ID (Azure AD) Hallinta</h3>
+                <p><strong>Kuvaus:</strong> Pilvipohjainen identiteetinhallinta-projekti, jossa testaan käyttäjähallintaa, turvallisuuskäytäntöjä ja pilviresurssien lisensointia.</p>
+                <div class="project-tags">
+                    <span class="tag">Microsoft Entra ID</span>
+                    <span class="tag">IAM</span>
+                    <span class="tag">Cloud Admin</span>
+                </div>
+            </div>
+            <a href="https://github.com/matiasgrahn/Azure-Cloud-Identity-management-lab" class="btn linkedin-nappi"> <i class="fa-brands fa-github"></i> GitHub</a>
+        </div>
+
+          <div class="project-card">
+            <div>
+                <h3>Tabata tyylinen mobiilisovellus (Adroid)</h3>
+                <p><strong>Kuvaus:</strong> Moderni Android-treenisovellus, joka on toteutettu Jetpack Composella. Projekti korostaa sujuvaa käyttäjäkokemusta ja teknistä viimeistelyä.</p>
+                <div class="project-tags">
+                    <span class="tag">Adroid Development</span>
+                    <span class="tag">Jetpack Compose</span>
+                    <span class="tag">UI/UX</span>
+                </div>
+            </div>
+            <a href="https://github.com/matiasgrahn/Tabata-Timer-Android" class="btn linkedin-nappi"> <i class="fa-brands fa-github"></i> GitHub</a>
+        </div>
+        <a href="#dokumentit" class="scroll-down">
+            <div class="scroll-arrow">
+                <i class="fa-solid fa-chevron-down"></i> </div>
+        </a>
+            </div>
+    </section>
+    
+    <!-- SIVU 4 ALKAA TÄSTÄ --> 
+    <section id="dokumentit" class="full-page">
+    <div class="section-header">
+        <h2>Yhteystiedot & Dokumentit</h2>
+        <p>Onko sinulla kysyttävää opinnäytetyöstäni tai haluatko keskustella mahdollisesta työpaikasta?</p>
+    </div>
+
+    <div class="contact-grid">
+        <div class="contact-card wide">
+            <h3 style="margin-left: auto;"> Lähetä sähköpostia</h3>
+            <p class="contact-value">matiasgrahn@hotmail.com</p>
+            <p class="contact-value">050 353 6651</p>
+            <a href="mailto:matiasgrahn@hotmail.com" class="btn linkedin-nappi">
+                <i class="fa-regular fa-paper-plane"></i> Lähetä viesti
             </a>
-            
-            <div class="button-row">
-                <a href="MatiasGrahn_CV_FI_2026.pdf" target="_blank" class="btn btn-fi"><i class="fi fi-fi fis" ></i> Suomi CV (PDF)</a>
-                <a href="MatiasGrahn_CV_EN_2026.pdf" target="_blank" class="btn btn-en"><i class="fi fi-gb fis" ></i> English CV (PDF)</a>
-            </div>
+        </div>
 
-            <div class="button-row">
-                <a href="Hakemus_Matias_Grahn.pdf" target="_blank" class="btn btn-fi"><i class="fi fi-fi fis" ></i> Suomi avoin hakemus (PDF)</a>
-                <a href="Application_Matias_grahn.pdf" target="_blank" class="btn btn-en"><i class="fi fi-gb fis" ></i> English Open Application (PDF)</a>
+        <div class="contact-card">
+            <h3>Sijainti</h3>
+            <div class="contact-info-row">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Helsinki, Suomi<br>00680</span>
             </div>
+        </div>
 
-            <a href="https://www.linkedin.com/in/matias-grahn-a0008a282" class="btn linkedin-nappi">
-                <i class="fa-brands fa-linkedin"></i> LinkedIn Profiili
+        <div class="contact-card">
+         <h3>Connect</h3>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/matias-grahn-a0008a282" target="_blank">
+                    <i class="fa-brands fa-linkedin"></i> LinkedIn
+                </a>
+                <a href="https://github.com/matiasgrahn" target="_blank">
+                    <i class="fa-brands fa-github"></i> GitHub
+                </a>
+            </div>
+        </div>
+
+      <div class="contact-card">
+    <h3>Dokumentit</h3>
+    <div class="doc-columns-wrapper">
+        <div class="doc-column">
+            <a href="MatiasGrahn_CV_FI_2026.pdf" target="_blank" class="doc-link">
+                <i class="fa-solid fa-file-pdf"></i> CV (FI)
             </a>
-        </nav>
+            <a href="MatiasGrahn_CV_EN_2026.pdf" target="_blank" class="doc-link">
+                <i class="fa-solid fa-file-pdf"></i> CV (EN)
+            </a>
+        </div>
+        <div class="doc-column">
+            <a href="Hakemus_Matias_Grahn.pdf" target="_blank" class="doc-link">
+                <i class="fa-solid fa-file-pdf"></i> Avoin Hakemus (FI)
+            </a>
+            <a href="Application_Matias_grahn.pdf" target="_blank" class="doc-link">
+                <i class="fa-solid fa-file-pdf"></i> Open Application (EN)
+            </a>
+        </div>
+        
+
+    </div>
+</div>
+    </div>
+</section>
+
+</div>
+
     </div>
 </body>
 </html>

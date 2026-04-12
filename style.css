@@ -1,17 +1,28 @@
-/* --- 1. PERUSASETUKSET & RESET --- */
+/* ==========================================================================
+   1. PÄÄTEEMAT
+   ========================================================================== */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+html {scroll-behavior: smooth;}
 header{margin-bottom: 20px;}
-.info-card {
-    background: rgba(255, 255, 255, 0.5); /* Kevyt tausta palloille */
-    padding: 20px;
-    border-radius: 15px;
-    margin-bottom: 30px;
+
+.full-page {
+    min-height: 90vh; /* Lähes koko näytön korkeus per sivu */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05); /* Kevyt viiva erottamaan sivut */
 }
+
 body {
+    padding-top: 80px !important;
+    opacity: 1 !important;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f1e6d4;
     color: #333;
@@ -22,33 +33,11 @@ body {
     padding: 20px;
     opacity: 0;
     transition: opacity 0.6s ease-in, background-color 0.5s ease;
+    
+    background-image: 
+    radial-gradient(at 0% 0%, rgba(0, 119, 181, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(204, 255, 0, 0.1) 0px, transparent 50%)
 }
-.main-cta {
-    font-size: 1.1rem;
-    padding: 18px !important;
-    width: 100%;
-    margin-top: 10px;
-    letter-spacing: 1px;
-    box-shadow: 0 5px 15px rgba(233, 157, 95, 0.3);
-}
-
-.video-section { margin-bottom: 30px;}
-
-.video-container video{
-    width: 100%;
-    max-width: 350px; /* Voit säätää tätä, jotta pystyvideo ei ole jättimäinen koneella */
-    height: auto;     /* Tämä poistaa mustat palkit ylä- ja alapuolelta/sivuilta */
-    display: block;
-    margin: 0 auto;   /* Keskittää videon */
-    border-radius: 12px; /* Tekee kulmista nätin pyöreät */
-    background-color: transparent; /* Varmistaa, ettei tausta paista läpi mustana */
-
-}
-
-.description p { margin-bottom: 15px; /* Korvataan <br> tägitarve */}
-
-.description p:last-child { margin-bottom: 0;}
-
 body.fade-in { opacity: 1; }
 body.fade-out { opacity: 0; }
 
@@ -56,19 +45,16 @@ body.fade-out { opacity: 0; }
     background-color: #fcfcfc;
     padding: 40px;
     border-radius: 12px;
-    max-width: 800px;
+    max-width:50%;
     width: 100%;
     text-align: center;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
     border: 1px solid rgba(0, 0, 0, 0.05);
     transition: all 0.5s ease;
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(0, 119, 181, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(204, 255, 0, 0.1) 0px, transparent 50%)
 }
-
-/* --- 2. TEKSTIT --- */
-h1 { color: #000; margin-bottom: 10px; }
-h2 { margin: 20px 0; }
-.subtitle, .contact-box { font-size: 1.2rem; color: #262727; margin-bottom: 30px; }
-
 .description {
     font-size: 1.1rem;
     line-height: 1.6;
@@ -76,7 +62,79 @@ h2 { margin: 20px 0; }
     text-align: left;
 }
 
-/* --- 3. PROJEKTIKORTIT & TÄGIT --- */
+.description p {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 20px;    
+}
+
+.description p:last-child { margin-bottom: 0;}
+
+h1 { color: #000; margin-bottom: 10px; }
+h2 { margin: 20px 0; }
+.subtitle, .contact-box { font-size: 1.2rem; color: #262727; margin-bottom: 30px; }
+
+
+.info-card {
+    background: rgba(255, 255, 255, 0.05); /* Erittäin läpinäkyvä */
+    backdrop-filter: blur(12px);           /* Sumentaa taustan "lasiksi" */
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Ohut "lasin" reuna */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+    border-radius:20px;
+}
+
+/* ==========================================================================
+   2. YLÄPALKKI
+   ========================================================================== */
+.top-nav {
+    position: fixed;
+   
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #e99d5f; /* Alkuperäisen tyylisi tumma sävy */
+    color: white;
+    padding: 10px 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.nav-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    margin-right: 20px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+
+.top-name-label {
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    margin-right: 15px;
+}
+
+/* Tärkeä navigaatiolinkkien toiminnalle */
+section {
+    scroll-margin-top: 80px;
+}
+
+/* ==========================================================================
+   3. PROJEKTIKORTIT
+   ========================================================================== */
 .projects-wrapper {
     display: grid;
     /* Luo sarakkeita, jotka ovat vähintään 320px leveitä. 
@@ -101,20 +159,16 @@ h2 { margin: 20px 0; }
     text-align: left;
     height: 100%; /* Kortit ovat saman korkuisia */
     border-left: 3px solid #e99d5f;
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(0, 119, 181, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(204, 255, 0, 0.1) 0px, transparent 50%)
+
+    
 }
 
 .project-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-}
-
-.projekti-kuvaus {
-    font-size: 0.9em;
-    background: #f9f9f9;
-    padding: 15px;
-    border-left: 4px solid #e99d5f;
-    border-radius: 8px;
-    margin-top: 15px;
 }
 
 .project-tags {
@@ -125,6 +179,9 @@ h2 { margin: 20px 0; }
     justify-content: flex-start;
     margin-bottom: 0px;
 }
+/* ==========================================================================
+   4. PROJEKTI-TÄGIT
+   ========================================================================== */
 
 .tag {
     
@@ -142,7 +199,9 @@ h2 { margin: 20px 0; }
     color: white;
 }
 
-/* --- 4. NAPIT --- */
+/* ==========================================================================
+   5. NAPIT
+   ========================================================================== */
 .btn {
     display: inline-block;
     padding: 12px 24px;
@@ -155,33 +214,9 @@ h2 { margin: 20px 0; }
     border: none;
     cursor: pointer;
 }
-.teemanvaihto
-{
-    background-color: #333 !important; /* Tumma tausta vaaleassa tilassa */
-    color: #ffffff !important;           /* Valkoinen teksti/ikoni */
-    padding: 10px 20px;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    margin-bottom: 20px;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-weight: bold;
-    transition: all 0.3s ease;
-}
-.teemanvaihto:hover {
-    background-color: #444 !important;
-    transform: translateY(-2px);
-}
 
 .btn:hover { transform: translateY(-2px); }
 
-.btn-navigaatio { background-color: #e99d5f; margin-bottom: 20px; }
-.btn-fi { background-color: #6c757d; }
-.btn-en { background-color: #4d4c4c; }
-.btn-fi i{border-radius: 40%; object-fit: cover;}
-.btn-en i{border-radius: 40%; } 
 
 .linkedin-nappi {
     background-color: #0077b5;
@@ -190,26 +225,10 @@ h2 { margin: 20px 0; }
 }
 .linkedin-nappi:hover { background-color: #005582; }
 
-.button-row { 
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-bottom: 10px;
-}
-.btn-group {
-    display: flex;
-    gap: 10px; /* Väli nappien välillä */
-    flex-wrap: wrap; /* Tiputtaa napit allekkain puhelimella */
-    margin-top: 15px;
-}
 
-.btn-group .btn {
-    flex: 1; /* Tekee napeista samanlevuiset */
-    min-width: 200px; /* Estää nappeja menemästä liian kapeiksi */
-    text-align: center;
-    justify-content: center;
-}
-/* --- 5. TAITOPALLEROT (SKILL SPHERES) --- */
+/* ==========================================================================
+   6. TAITOPALLEROT
+   ========================================================================== */
 .skill-container { display: flex; justify-content: center; gap: 30px; margin: 20px 0; }
 
 .skill-sphere {
@@ -247,29 +266,10 @@ h2 { margin: 20px 0; }
 
 .skill-sphere:hover .skill-popup { opacity: 1; visibility: visible; }
 
-/* --- 6. VIDEOT --- */
-.video-container video {
-    width: 100%;
-    max-width: 300px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
 
-/* --- 7. TUMMA TEEMA --- */
-body.dark-theme { background-color: #121212; color: #e0e0e0; }
-body.dark-theme .container { background-color: #1e1e1e; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-body.dark-theme h1, body.dark-theme h2 { color: #fff; }
-body.dark-theme .project-card { background: #252525; border-color: #333; border-left: 3px solid #0077b5; }
-body.dark-theme .projekti-kuvaus { background: #333; border-left: 4px solid #0077b5}
-body.dark-theme .tag { background: #333; color: #ddd; border-color: #444; }
-body.dark-theme .tag:hover {background:#0077b5 }
-body.dark-theme .subtitle{ color: #ffffff;}
-body.dark-theme .teemanvaihto{ background-color: #f1c40f !important; color: #000000 !important; }
-body.dark-theme .teemanvaihto:hover {background-color: #d4ac0d !important;}
-body.dark-theme .info-card {background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.1);
-}
-
-/* --- PS1 - tyylit --- */
+/* ==========================================================================
+   7. POWERSHELL.HTML PÄÄTYYLIT
+   ========================================================================== */
 .code-viewer-container {
     background-color: #1e1e1e; /* VS Code tumma tausta */
     border-radius: 10px;
@@ -337,17 +337,409 @@ body.dark-theme .info-card {background: rgba(255, 255, 255, 0.05); border-color:
     line-height: 1.5;
 }
 
+/* ==========================================================================
+   8. VIDEO JA KUVA TYYLIT
+   ========================================================================== */
+   .profile-pic-container {
+    margin-bottom: 20px;
+}
 
-/* --- 9. MOBIILIOPTIMOINTI (Päivitetty) --- */
+.profile-pic {
+    width: 400px;  /* Säädä kokoa tarvittaessa */
+    height: 400px;
+    border-radius: 50%; /* Tekee kuvasta pyöreän */
+    object-fit: cover;  /* Pitää kuvan suhteet oikeina */
+    border: 4px solid #e99d5f;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.profile-pic:hover {
+    transform: scale(1.05);
+}
+
+.video-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    background-color: #0b0f14;
+    background-image: 
+        radial-gradient(at 25% 100%, rgba(0, 118, 181, 0.452) 0px, transparent 50%),
+        radial-gradient(at 100% 25%, rgba(204, 255, 0, 0.274) 0px, transparent 50%);
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.video-btn:hover {
+    background-color: #0b0f14;
+    background-image: 
+        radial-gradient(at 0% 100%, rgba(0, 119, 181, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(204, 255, 0, 0.08) 0px, transparent 50%);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(38, 49, 112, 0.4);
+}
+
+.video-modal {
+    position: fixed;
+    z-index: 2000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.video-content {
+    position: relative;
+    width: 80%;
+    max-width: 800px;
+}
+
+.close-video {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+}
+.video-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 20px 0;
+}
+
+.video-container video {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+/* ==========================================================================
+   9. DARKMODE
+   ========================================================================== */
+
+    body.dark-theme { background-color: #121212; color: #e0e0e0; }
+    body.dark-theme .container { background-color: #1e1e1e; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    background-image: 
+    radial-gradient(at 0% 100%, rgba(0, 119, 181, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(204, 255, 0, 0.08) 0px, transparent 50%);
+    }
+    body.dark-theme h1, body.dark-theme h2 { color: #fff; }
+    body.dark-theme .project-card { background: #1e1e1e; border-color: #333; border-left: 3px solid #0077b5;
+    background-image: 
+    radial-gradient(at 0% 100%, rgba(0, 119, 181, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(204, 255, 0, 0.08) 0px, transparent 50%);
+    }
+    body.dark-theme .projekti-kuvaus { background: #333; border-left: 4px solid #0077b5}
+    body.dark-theme .tag { background: #333; color: #ddd; border-color: #444; }
+    body.dark-theme .tag:hover {background:#0077b5 }
+    body.dark-theme .subtitle{ color: #ffffff;}
+    body.dark-theme .teemanvaihto{ background-color: #f1c40f !important; color: #000000 !important; }
+    body.dark-theme .teemanvaihto:hover {background-color: #d4ac0d !important;}
+    body.dark-theme .info-card {background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.1);}
+    body.dark-theme .top-nav {background-color:#0077b5 ;}
+    body.dark-theme .doc-link:hover {color: #0077b5;}
+    body.dark-theme .social-links a:hover {color:#0077b5 ;}
+    body.dark-theme .doc-link:hover{color: #0077b5;}
+    body.dark-theme .contact-card h3{color: #0077b5;}
+    body.dark-theme .contact-card {border-left: 3px solid #0077b5;
+    background-image: 
+    radial-gradient(at 0% 100%, rgba(0, 119, 181, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(204, 255, 0, 0.08) 0px, transparent 50%);
+    }
+    body.dark-theme .scroll-down {color: #0077b5;}
+    body.dark-theme .contact-card.wide i {color:#ffffff ;}
+    body.dark-theme .send-message-btn {color: #ffffff;}
+    body.dark-theme {
+        /* Tumma teema - syvä ja hieno */
+        background-color: #0b0f14;
+        background-image: 
+            radial-gradient(at 0% 100%, rgba(0, 119, 181, 0.15) 0px, transparent 50%),
+            radial-gradient(at 100% 0%, rgba(204, 255, 0, 0.08) 0px, transparent 50%);   
+    }
+    body.dark-theme .profile-pic { border: 4px solid #0077b5;}     
+
+    /* ==========================================================================
+   10. NUOLINAPPULA ALASPÄIN, DARK MODE KYTKIN JA SIIRTYMÄT
+   ========================================================================== */
+   .scroll-down {
+    position: absolute;
+    bottom: 30px; /* Jättää 30px väliä alareunaan */
+    left: 50%;
+    transform: translateX(-50%); /* Keskittää elementin */
+    text-decoration: none;
+    color: #e99d5f; /* Keltainen korostusväri, jota käytät */
+    font-size: 2rem; /* Nuolen koko */
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
+    z-index: 10; /* Varmistaa, että nuoli on muiden päällä */
+}
+
+/* Nuoli-divin asettelu */
+.scroll-arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* --- UUSI TOGGLE-KYTKIN --- */
+
+/* Säiliö, joka pitää kytkimen linjassa navigaatiossa */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 60px; /* Kytkimen kokonaisleveys */
+    height: 30px; /* Kytkimen korkeus */
+}
+
+/* Piilotetaan alkuperäinen checkbox-laatikko kokonaan */
+.theme-checkbox {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* Kytkimen tausta (pilillero) */
+.theme-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: transparent; /* Oletuksena läpinäkyvä (vain reunat näkyy) */
+    border: 2px solid #ffffff; /* Musta reunaviiva, kuten kuvassa */
+    border-radius: 34px;    /* Tekee kytkimestä täysin pyöreän reunoista */
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Liikkuva pallo (pilleron sisällä) */
+.slider-ball {
+    position: absolute;
+    content: "";
+    height: 22px; /* Pallon koko on pienempi kuin kytkimen sisäosa */
+    width: 22px;
+    left: 4px;   /* Pieni rako vasemmalle */
+    bottom: 2px;  /* Pieni rako alas (tasapainotettu reunaviivaan) */
+    background-color: #ffffff; /* Musta pallo oletuksena (light modessa) */
+    border-radius: 50%; /* Tekee pallosta täysin pyöreän */
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Sulava liike */
+}
+
+/* --- TEOSTUKSET DARK-THEMESSA (kun checkbox on valittu) --- */
+
+/* Kun checkbox on valittu, kytkin muuttuu keltaiseksi (lime) */
+.theme-checkbox:checked + .theme-slider {
+     /* Sun teemaväri */
+    border-color: #ffffff;     /* Myös reunaviiva keltaiseksi */
+}
+
+/* Kun checkbox on valittu, pallo liikkuu oikealle */
+.theme-checkbox:checked + .theme-slider .slider-ball {
+    transform: translateX(28px); /* Liikutetaan palloa oikealle (60px - 22px - raot) */
+    background-color: #1a1a1a;  /* Pallo muuttuu tummaksi keltaisen päällä */
+}
+
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    40% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+    60% {
+        transform: translateX(-50%) translateY(-5px);
+    }
+}
+
+/* Lisää animaatio nuoleen */
+.scroll-down {
+    animation: bounce 2s infinite; /* Toistuu jatkuvasti */
+}
+
+/* Pysäytetään animaatio, kun hiiri on päällä (valinnainen) */
+.scroll-down:hover {
+    animation: none;
+    transform: translateX(-50%) translateY(5px);
+}    
+
+    /* ==========================================================================
+   11. ISOT MAGEET PALLEROT SIVUJEN LAIDOISSA
+   ========================================================================== */
+
+.bg-blob {
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: -1; /* Pysyy kaiken takana */
+    opacity: 0.4;
+    animation: move 20s infinite alternate;
+}
+
+.blob-1 {
+    top: -100px;
+    left: -100px;
+    background: #0077b5;
+}
+
+.blob-2 {
+    bottom: -100px;
+    right: -100px;
+    background: #ccff00;
+    animation-delay: -5s;
+}
+
+@keyframes move {
+    from { transform: translate(0, 0); }
+    to { transform: translate(100px, 150px); }
+}
+
+.full-page {
+    position: relative; /* Tämä on tärkeä, jotta nuoli voidaan asettaa suhteessa sivuun */
+}
+
+/* ==========================================================================
+   12. VIIMEINEN SIVU 
+   ========================================================================== */
+
+/* --- CONTACT GRID --- */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Leveä kortti vasemmalle, kapeat oikealle */
+    grid-template-rows: auto auto;
+    gap: 20px;
+    width: 100%;
+    max-width: 1000px;
+    margin-top: 40px;
+}
+
+.contact-card {
+    background: rgba(255, 255, 255, 0.03); /* Todella kevyt tausta */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    border-left: 3px solid #e99d5f;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Tehdään ensimmäisestä kortista korkeampi */
+.contact-card.wide {
+    grid-row: span 2;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+.contact-card.wide i {
+    color: #e99d5f;
+}
+ .send-message-btn {
+    color:#2c2c2c;
+ }
+
+.contact-card h3 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #e99d5f; /* Oranssi korostus otsikoihin */
+    margin-bottom: 10px;
+    margin-right: auto;
+}
+
+.contact-value {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Dokumentit-listaus */
+.doc-list, .social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+
+.doc-link, .social-links a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.3s;
+}
+
+.doc-link:hover, .social-links a:hover {
+    color: #e99d5f;
+    transform: translateX(5px);
+}
+/* Säiliö molemmille sarakkeille */
+.doc-columns-wrapper {
+    display: flex;
+    justify-content: space-between; /* Työntää sarakkeet reunoille */
+    gap:20px;
+    width: 80%;
+}
+
+/* Yksittäinen sarake */
+.doc-column {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex:0 1 auto; 
+    text-align: left;
+
+}
+
+/* Oikeanpuoleisen sarakkeen tekstin tasaus oikealle (valinnainen) */
+.doc-column:last-child {
+    text-align: right;
+}
+
+/* Varmistetaan, että ikoni ja teksti pysyvät nätisti yhdessä oikealle tasatessa */
+.doc-column:last-child .doc-link {
+    justify-content: flex-start;
+}
+
+.doc-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.95rem;
+    transition: color 0.3s;
+}
+
+.doc-link:hover {
+    color: #e99d5f;
+}
+
+
+/* ==========================================================================
+  13. MOBIILIOPTIMOINNIT
+   ========================================================================== */
 @media (max-width: 800px) {
     body {
-        padding: 0 !important;
+        padding: 0px !important;
     }
 
     .container {
-        padding: 15px 10px; /* Hieman enemmän tilaa ylhäällä kuin sivuilla */
         width: 100%;
-        border-radius: 0; 
+        padding: 15px 10px; /* Hieman enemmän tilaa ylhäällä kuin sivuilla */
+        max-width: 200%;
+        padding-top: 40px;
+    
     }
 
     /* Pienennetään otsikoita, jotta ne eivät rivity rumasti */
@@ -436,5 +828,89 @@ body.dark-theme .info-card {background: rgba(255, 255, 255, 0.05); border-color:
         font-size: 0.7rem;
     }
 
+    .nav-container {
+        flex-direction: column; /* Muutetaan vaaka-asento pystyasennoksi */
+        gap: 10px;
+        padding: 15px;
+        padding-top: 50px;
+        width: 100%;
+        justify-content: center;
+        
+    }
+    .nav-links {
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+    }
+    .top-name-label {
+        font-size: 12px;
+    }
+    .theme-switch-wrapper {
+        transform: scale(0.85); /* Hieman pienempi mobiilissa */
+    }
+     .doc-columns-wrapper {
+        flex-direction: column;
+    }
+    .doc-column:last-child {
+        text-align: left;
+    }
+    .doc-column:last-child .doc-link {
+        justify-content: flex-start;
+    }
+     .contact-grid {
+        display: grid !important;
+        grid-template-columns: 1fr !important; /* Vain yksi sarake */
+        gap: 20px;
+        width: 100%;
+        padding: 0;
+    }
+    .contact-card.wide {
+        grid-row: auto;
+    }
+    .contact-card {
+        width: 100%;
+        text-align: center;
+    }
+
+    .profile-pic {
+        width: 300px !important;  /* Hieman pienempi kuin desktopilla */
+        height: 300px !important;
+        margin-top: 20px;
+        
+    }
+    
+    .video-content {
+        /* Pakotetaan video pienemmäksi puhelimella */
+        width: 100% !important;   /* Jättää selkeät raot sivuille */
+        max-width: 500px !important; /* Estää videota venymästä liian korkeaksi */
+        max-height: 60vh !important;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        overflow: visible;
+    }
+    #esittelyvideo {
+        width: 100% !important;
+        height: auto !important;
+        max-height: 60vh !important; /* Varmistetaan että itse videokin tottelee */
+        border-radius: 10px;
+        display: block;
+    }
+
+    .video-modal {
+        display: none; /* JS vaihtaa tämän flexiksi */
+        position: fixed;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+    .close-video {
+        top: -35px; /* Nostetaan nappi videon yläpuolelle mobiilissa */
+        right: 0;
+        font-size: 30px;
+    }
+    
 
 }
+
+
+
+

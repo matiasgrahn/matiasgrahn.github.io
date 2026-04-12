@@ -1,26 +1,33 @@
 const themeToggle = document.getElementById('theme-toggle');
 const themeIcon = document.getElementById('theme-icon');
 const body = document.body;
+const videoBtn = document.getElementById('play-video-btn');
+const videoModal = document.getElementById('video-container');
+const closeBtn = document.querySelector('.close-video');
+const videoElement = document.getElementById('esittelyvideo');
 
 // 1. Tarkistetaan onko käyttäjä valinnut tumman teeman aiemmin
-if (localStorage.getItem('theme') === 'dark') {
-    body.classList.add('dark-theme');
-    themeIcon.classList.replace('fa-moon', 'fa-sun');
+const currentTheme = localStorage.getItem('theme');
+if (currentTheme) {
+    body.classList.add(currentTheme);
+    // Jos aiemmin tallennettu teema on dark, laitetaan kytkin "päälle"
+    if (currentTheme === 'dark-theme') {
+        themeToggle.checked = true;
+    }
 }
 
-// 2. Kuunnellaan napin painallusta
-themeToggle.addEventListener('click', () => {
-    body.classList.toggle('dark-theme');
-    
-    // Vaihdetaan ikoni ja tallennetaan asetus muistiin
-    if (body.classList.contains('dark-theme')) {
-        themeIcon.classList.replace('fa-moon', 'fa-sun');
-        localStorage.setItem('theme', 'dark');
+// Kuunnellaan kytkimen muuttumista (klikkaus)
+themeToggle.addEventListener('change', (e) => {
+    // Jos kytkin on kytketty päälle
+    if (e.target.checked) {
+        body.classList.add('dark-theme');
+        localStorage.setItem('theme', 'dark-theme'); // Tallennetaan valinta
     } else {
-        themeIcon.classList.replace('fa-sun', 'fa-moon');
-        localStorage.setItem('theme', 'light');
+        body.classList.remove('dark-theme');
+        localStorage.setItem('theme', 'light-theme'); // Poistetaan dark mode tallennuksesta
     }
 });
+
 // 3. vähän paremman näköistä sivun vaihtoa
 window.addEventListener('DOMContentLoaded', () => {
     // 1. Feidataan sivu sisään heti kun se ladatau
@@ -59,5 +66,54 @@ window.addEventListener('pageshow', (event) => {
         
         // Jos haluat pakottaa täyden uudelleenlatauksen:
         // window.location.reload(); 
+    }
+});
+
+window.addEventListener('DOMContentLoaded', (event) => {
+    const video = document.querySelector('video');
+    if (video) {
+        video.volume = 0.2; // Asettaa oletusäänenvoimakkuuden 20 prosenttiin
+    }
+});
+
+const navLinks = document.querySelectorAll('.nav-links a, .scroll-down');
+
+navLinks.forEach(link => {
+    link.addEventListener('click', function (e) {
+        // Estetään perinteinen välitön hyppy
+        e.preventDefault(); 
+
+        // Haetaan kohteen ID (esim. #projektit)
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+
+        if (targetElement) {
+            // Lasketaan navigaatiopalkin korkeus, jotta skrollaus ei peitä otsikkoa
+            const navHeight = document.querySelector('.top-nav').offsetHeight;
+            const targetPosition = targetElement.offsetTop - navHeight;
+
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+videoBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    videoModal.style.display = 'flex';
+    videoElement.play(); // Video alkaa heti kun modal aukeaa
+});
+
+closeBtn.addEventListener('click', () => {
+    videoModal.style.display = 'none';
+    videoElement.pause(); // Video pysähtyy kun se suljetaan
+});
+
+// Sulje video klikkaamalla videon ulkopuolelle
+window.addEventListener('click', (e) => {
+    if (e.target == videoModal) {
+        videoModal.style.display = 'none';
+        videoElement.pause();
     }
 });
