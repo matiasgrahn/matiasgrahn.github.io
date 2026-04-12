@@ -91,7 +91,7 @@ h2 { margin: 20px 0; }
    ========================================================================== */
 .top-nav {
     position: fixed;
-   
+    transition: transform 0.3s ease-in-out; /* Tekee liikkumisesta sulavaa */
     top: 0;
     left: 0;
     width: 100%;
@@ -120,7 +120,9 @@ h2 { margin: 20px 0; }
     font-size: 0.9rem;
     transition: color 0.3s;
 }
-
+.nav-hidden {
+        transform: translateY(-100%);
+    }
 
 .top-name-label {
     font-weight: bold;
@@ -606,7 +608,7 @@ section {
 .blob-2 {
     bottom: -100px;
     right: -100px;
-    background: #ff9900;
+    background: #ffee00;
     animation-delay: -5s;
 }
 
@@ -747,7 +749,7 @@ section {
         width: 100%;
         padding: 15px 10px; /* Hieman enemmän tilaa ylhäällä kuin sivuilla */
         max-width: 200%;
-        padding-top: 120px;
+        padding-top: 220px;
     
     }
 
@@ -848,6 +850,7 @@ section {
         
     }
     .nav-links {
+        display: flex;
         flex-direction: column;
         gap: 8px;
     }

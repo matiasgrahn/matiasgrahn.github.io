@@ -117,3 +117,23 @@ window.addEventListener('click', (e) => {
         videoElement.pause();
     }
 });
+
+let lastScrollY = window.scrollY;
+const nav = document.querySelector('.top-nav');
+
+window.addEventListener('scroll', () => {
+    // Tarkistetaan onko kyseessä mobiili (leveys alle 600px)
+    if (window.innerWidth <= 800) {
+        if (window.scrollY > lastScrollY && window.scrollY > 50) {
+            // Skrollataan alas -> piilota
+            nav.classList.add('nav-hidden');
+        } else {
+            // Skrollataan ylös -> näytä
+            nav.classList.remove('nav-hidden');
+        }
+    } else {
+        // Varmistetaan, että työpöydällä palkki on aina näkyvissä
+        nav.classList.remove('nav-hidden');
+    }
+    lastScrollY = window.scrollY;
+});
