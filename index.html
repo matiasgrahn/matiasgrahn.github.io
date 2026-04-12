@@ -2,7 +2,7 @@
 <html lang="fi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Matias Grahn - Profiilisivu</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -248,21 +248,45 @@
     </div>
 
     <div class="contact-grid">
-        <div class="contact-card wide">
-            <h3 style="margin-left: auto;"> Lähetä sähköpostia</h3>
+    <div class="contact-card wide">
+            <h3 style="margin-left: auto;">Ota Yhteyttä !</h3>
             <p class="contact-value">matiasgrahn@hotmail.com</p>
             <p class="contact-value">050 353 6651</p>
-            <a href="mailto:matiasgrahn@hotmail.com" class="btn linkedin-nappi">
+
+        <div class="contact-container">
+            <form id="my-form" class="contact-form">
+            <h3 style="color: black;" >Lähetä viesti suoraan tästä </h3>
+        
+            <div class="form-group">
+                <input type="email" name="email" required placeholder="Sähköpostisi">
+            </div>
+        
+            <div class="form-group">
+                <textarea name="message" required placeholder="Kirjoita viestisi tähän..."></textarea>
+            </div>
+
+            <button type="submit" class="btn">
                 <i class="fa-regular fa-paper-plane"></i> Lähetä viesti
-            </a>
+            </button>
+            </form>
+        </div>
+    </div>
+
+        <div class="contact-card location-card">
+        <h3>Sijainti</h3>
+    
+        <div class="map-wrapper">
+            <img src="helsinki.png " alt="Uusimaa Map" class="map-bg">
+            <div class="radar-container">
+                <div class="radar-circle"></div>
+                <div class="radar-pulse"></div>
+                <div class="radar-point"></div>
+            </div>
         </div>
 
-        <div class="contact-card">
-            <h3>Sijainti</h3>
-            <div class="contact-info-row">
-                <i class="fa-solid fa-location-dot"></i>
-                <span>Helsinki, Suomi<br>00680</span>
-            </div>
+        <div class="contact-value">
+            <span>Uusimaa, Suomi</span>
+        </div>
         </div>
 
         <div class="contact-card">

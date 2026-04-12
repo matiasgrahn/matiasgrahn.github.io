@@ -99,6 +99,8 @@ navLinks.forEach(link => {
         }
     });
 });
+
+// VIDEO BOXIN AVAUS 
 videoBtn.addEventListener('click', (e) => {
     e.preventDefault();
     videoModal.style.display = 'flex';
@@ -118,13 +120,14 @@ window.addEventListener('click', (e) => {
     }
 });
 
+// Piilottaa Navigointi palkin kun skrollaaa
 let lastScrollY = window.scrollY;
 const nav = document.querySelector('.top-nav');
 
 window.addEventListener('scroll', () => {
     // Tarkistetaan onko kyseessä mobiili (leveys alle 600px)
     if (window.innerWidth <= 800) {
-        if (window.scrollY > lastScrollY && window.scrollY > 100) {
+        if (window.scrollY > lastScrollY && window.scrollY > 50) {
             // Skrollataan alas -> piilota
             nav.classList.add('nav-hidden');
         } else {
@@ -137,3 +140,36 @@ window.addEventListener('scroll', () => {
     }
     lastScrollY = window.scrollY;
 });
+
+// Paremmin toimiva sähköposti formi
+var form = document.getElementById("my-form");
+
+async function handleSubmit(event) {
+    event.preventDefault();
+    var button = event.target.querySelector(".btn");
+    var data = new FormData(event.target);
+
+    button.disabled = true;
+    button.innerHTML = "Lähetetään...";
+
+    fetch("https://formspree.io/f/xwvaepje", { // <-- VAIHDA TÄHÄN SUN KOODI
+        method: "POST",
+        body: data,
+        headers: {
+            'Accept': 'application/json'
+        }
+    }).then(response => {
+        if (response.ok) {
+            button.innerHTML = "Viesti lähetetty!";
+            button.style.backgroundColor = "#28a745"; // Muuttuu vihreäksi
+            form.reset();
+        } else {
+            button.innerHTML = "Hups! Yritä uudelleen";
+            button.disabled = false;
+        }
+    }).catch(error => {
+        button.innerHTML = "Verkkovirhe";
+        button.disabled = false;
+    });
+}
+form.addEventListener("submit", handleSubmit);
