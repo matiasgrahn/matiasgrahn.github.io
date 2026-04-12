@@ -42,7 +42,11 @@ body.fade-in { opacity: 1; }
 body.fade-out { opacity: 0; }
 
 .container {
-    background-color: #fcfcfc;
+    background: rgba(255, 255, 255, 0.05); /* Erittäin läpinäkyvä */
+    background-image: 
+    radial-gradient(at 0% 0%, rgba(0, 119, 181, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(204, 255, 0, 0.1) 0px, transparent 50%);
+
     padding: 40px;
     border-radius: 12px;
     max-width:50%;
@@ -51,9 +55,7 @@ body.fade-out { opacity: 0; }
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
     border: 1px solid rgba(0, 0, 0, 0.05);
     transition: all 0.5s ease;
-    background-image: 
-        radial-gradient(at 0% 0%, rgba(0, 119, 181, 0.15) 0px, transparent 50%),
-        radial-gradient(at 100% 100%, rgba(204, 255, 0, 0.1) 0px, transparent 50%)
+
 }
 .description {
     font-size: 1.1rem;
@@ -427,7 +429,7 @@ section {
    ========================================================================== */
 
     body.dark-theme { background-color: #121212; color: #e0e0e0; }
-    body.dark-theme .container { background-color: #1e1e1e; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    body.dark-theme .container { background: rgba(255, 255, 255, 0.05); /* Erittäin läpinäkyvä */ box-shadow: 0 5px 20px rgba(0,0,0,0.5);
     background-image: 
     radial-gradient(at 0% 100%, rgba(0, 119, 181, 0.15) 0px, transparent 50%),
     radial-gradient(at 100% 0%, rgba(204, 255, 0, 0.08) 0px, transparent 50%);
@@ -604,7 +606,7 @@ section {
 .blob-2 {
     bottom: -100px;
     right: -100px;
-    background: #ccff00;
+    background: #ff9900;
     animation-delay: -5s;
 }
 
@@ -872,7 +874,7 @@ section {
     }
 
     .scroll-arrow {
-        opacity: 0;
+        opacity: 0;  /* NUOLI POIS NÄYTÖLTÄ MOBIILILLA */
     }
 
     /* MOBIILITIOPTIMOINNIT VIIMEISELLE SIVULLE */
