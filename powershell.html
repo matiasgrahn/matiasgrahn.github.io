@@ -1,32 +1,15 @@
 
-<!DOCTYPE html>
-<html lang="fi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Koodi - IT-diagnostiikka.ps1</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
-<body class="dark-theme" style="opacity: 1;">
-    <div class="container" style="max-width: 1000px;">
+     <title>Koodi - IT-diagnostiikka.ps1</title>
         <header>
-            <a href="index.html" class="btn btn-navigaatio" style="margin-bottom: 20px;">
-                <i class="fa-solid fa-arrow-left"></i> Takaisin pääsivulle
-            </a>
             <h1>IT-diagnostiikka.ps1</h1>
             <p class="subtitle">Windows-automaatio teknisen tuen avuksi</p>
         </header>
-
-        <section class="info-card" style="text-align: left; margin-bottom: 20px;">
             <p><strong>Miksi tämä työkalu?</strong> Tämä PowerShell-skripti on luotu nopeuttamaan IT-tuen vianmääritystä. Se hakee yhdellä ajolla kriittiset tiedot, kuten järjestelmän pystyssäoloajan (Uptime), verkkoyhteyden laadun, levytilan ja Windows-päivitysten tilanteen.</p>
-        </section>
 
         <section class="code-viewer-container">
-            <div class="code-header">
-                <span><i class="fa-solid fa-file-code" style="color: #0078d4;"></i> IT-diagnostiikka.ps1</span>
-                <button class="copy-btn" onclick="copyCode()">Kopioi koodi</button>
-            </div>
+            <button class="copy-btn" onclick="copyCode()" style="background: #0078d4; color: white; border: none; padding: 5px 12px; border-radius: 4px; cursor: pointer;">
+            Kopioi koodi
+            </button>
             <pre><code id="powershell-code">
 <span class="ps-command">Clear-Host</span>
 
@@ -100,13 +83,4 @@
 <span class="ps-command">Read-Host</span> -Prompt <span class="ps-string">"`nSkripti suoritettu. Paina Enter sulkeaksesi ikkunan"</span>
             </code></pre>
         </section>
-    </div>
 
-    <script>
-        function copyCode() {
-            const code = document.getElementById('powershell-code').innerText;
-            navigator.clipboard.writeText(code);
-            alert("Koodi kopioitu leikepöydälle!");
-        }
-    </script>
-</body>

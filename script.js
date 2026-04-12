@@ -6,6 +6,7 @@ const videoModal = document.getElementById('video-container');
 const closeBtn = document.querySelector('.close-video');
 const videoElement = document.getElementById('esittelyvideo');
 
+
 // 1. Tarkistetaan onko käyttäjä valinnut tumman teeman aiemmin
 const currentTheme = localStorage.getItem('theme');
 if (currentTheme) {
@@ -173,3 +174,59 @@ async function handleSubmit(event) {
     });
 }
 form.addEventListener("submit", handleSubmit);
+
+
+// Etsi nappi, joka avaa koodin (varmista että napilla on id="open-powershell")
+const openBtn = document.getElementById("open-powershell");
+const modal = document.getElementById("powershell-modal");
+const modalBody = document.getElementById("modal-body");
+const closeModalBtn = document.querySelector(".close-modal"); 
+
+openBtn.addEventListener("click", function(e) {
+    e.preventDefault();
+    
+    // Ladataan powershell.html sisältö
+    fetch('powershell.html')
+        .then(response => response.text())
+        .then(data => {
+            modalBody.innerHTML = data;
+            modal.style.display = "block";
+            document.body.style.overflow = "hidden"; // Estää pääsivun rullauksen
+        });
+});
+
+// Sulje klikkaamalla ruksia
+closeModalBtn.onclick = function() {
+    modal.style.display = "none";
+    document.body.style.overflow = "auto";
+}
+
+// Sulje klikkaamalla ikkunan ulkopuolelle
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";
+    }
+}
+
+const openThesisBtn = document.getElementById("open-thesis");
+const thesisModal = document.getElementById("thesis-modal");
+const closeThesisBtn = document.querySelector(".close-thesis-modal");
+const thesisModalBody = document.getElementById("thesis-modal-body");
+
+openThesisBtn.addEventListener("click", function(e) {
+    e.preventDefault();
+    fetch('thesis_content.html') // Luodaan tämä tiedosto seuraavaksi
+        .then(response => response.text())
+        .then(data => {
+            thesisModalBody.innerHTML = data;
+            thesisModal.style.display = "block";
+            document.body.style.overflow = "hidden";
+        });
+});
+
+closeThesisBtn.onclick = function() {
+    thesisModal.style.display = "none";
+    document.body.style.overflow = "auto";
+}
+
