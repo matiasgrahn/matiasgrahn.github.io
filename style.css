@@ -252,7 +252,7 @@ section {
 .skill-sphere:nth-child(1) { background-color: #28a745; }
 .skill-sphere:nth-child(2) { background-color: #dc3545; }
 .skill-sphere:nth-child(3) { background-color: #007bff; }
-
+.skill-sphere:nth-child(4) { background-color: #e9ca1a; }
 .skill-popup {
     position: absolute;
     bottom: 80px;
@@ -266,6 +266,10 @@ section {
     opacity: 0;
     visibility: hidden;
     transition: 0.3s;
+    background: rgba(0, 0, 0, 0.733); /* Erittäin läpinäkyvä */
+    background-image: 
+    radial-gradient(at 0% 0%, rgba(0, 119, 181, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(204, 255, 0, 0.1) 0px, transparent 50%);
 }
 
 .skill-sphere:hover .skill-popup { opacity: 1; visibility: visible; }
@@ -768,6 +772,10 @@ section {
         width: 50px;
         height: 50px;
     }
+    .it .skill-popup {
+        left: 60px;
+    }
+
 
     /* Info-kortti (missä pallerot ovat) */
     .info-card {

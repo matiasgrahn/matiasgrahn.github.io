@@ -124,7 +124,7 @@ const nav = document.querySelector('.top-nav');
 window.addEventListener('scroll', () => {
     // Tarkistetaan onko kyseessä mobiili (leveys alle 600px)
     if (window.innerWidth <= 800) {
-        if (window.scrollY > lastScrollY && window.scrollY > 50) {
+        if (window.scrollY > lastScrollY && window.scrollY > 100) {
             // Skrollataan alas -> piilota
             nav.classList.add('nav-hidden');
         } else {
