@@ -299,6 +299,6 @@ function fetchStatus() {
         })
         .catch(err => {
             console.error("Virhe ladattaessa JSONia:", err);
-            document.getElementById('live-status-content').innerHTML = "<p>Tilaa ei saatavilla. Odota automaattista päivitystä.</p>";
+            document.getElementById('live-status-content').innerHTML = "<p>Tilaa ei saatavilla. Odota automaattista päivitystä (Päivitys toimii vain kontitetussa ympäristössä tai live-serverillä !).</p>";
         });
 }
