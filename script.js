@@ -29,12 +29,12 @@ themeToggle.addEventListener('change', (e) => {
     }
 });
 
-// 3. vähän paremman näköistä sivun vaihtoa
+// Vähän paremman näköistä sivun vaihtoa
 window.addEventListener('DOMContentLoaded', () => {
-    // 1. Feidataan sivu sisään heti kun se ladatau
+    // Feidataan sivu sisään heti kun se ladatau
     document.body.classList.add('fade-in');
 
-    // 2. Etsitään kaikki linkit, jotka johtavat toiselle sivulle
+    // Etsitään kaikki linkit, jotka johtavat toiselle sivulle
     const links = document.querySelectorAll('a');
 
     links.forEach(link => {
@@ -57,7 +57,7 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// 4. Korjaus "takaisin-nappiin" ja swaippaamiseen
+// Korjaus "takaisin-nappiin" ja swaippaamiseen
 window.addEventListener('pageshow', (event) => {
     // Jos event.persisted on true, sivu ladattiin selaimen välimuistista (back-button)
     if (event.persisted) {
@@ -70,6 +70,7 @@ window.addEventListener('pageshow', (event) => {
     }
 });
 
+//FUNKTIO VIDEOON ETTEI SE OLE TÄYSILLÄ AUTOMAATTISESTI KUN KLIKKAA AUKI
 window.addEventListener('DOMContentLoaded', (event) => {
     const video = document.querySelector('video');
     if (video) {
@@ -77,8 +78,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
     }
 });
 
+//FUNKTIO "SMOOTH NAVIGATION"
 const navLinks = document.querySelectorAll('.nav-links a, .scroll-down');
-
 navLinks.forEach(link => {
     link.addEventListener('click', function (e) {
         // Estetään perinteinen välitön hyppy
@@ -121,28 +122,35 @@ window.addEventListener('click', (e) => {
     }
 });
 
-// Piilottaa Navigointi palkin kun skrollaaa
+// FUNKTIO NAVIGOINTIPALKIN PIILOTTAMISEEN PUHELIMELLA
 let lastScrollY = window.scrollY;
 const nav = document.querySelector('.top-nav');
 
 window.addEventListener('scroll', () => {
-    // Tarkistetaan onko kyseessä mobiili (leveys alle 600px)
-    if (window.innerWidth <= 800) {
-        if (window.scrollY > lastScrollY && window.scrollY > 50) {
-            // Skrollataan alas -> piilota
+    const currentScrollY = window.scrollY;
+    // Määritetään kynnysarvo (esim. 800px tai window.innerHeight), 
+    // jonka jälkeen navigaatio ei enää palaa ylös skrollatessa.
+    const firstPageHeight = window.innerHeight * 0.8; 
+
+    if (window.innerWidth <= 1100) {
+        if (currentScrollY > firstPageHeight) {
+            // Jos ollaan ekan sivun alapuolella, pidetään navi aina piilossa
             nav.classList.add('nav-hidden');
         } else {
-            // Skrollataan ylös -> näytä
-            nav.classList.remove('nav-hidden');
+            // Jos ollaan vielä ekan sivun alueella, käytetään normaalia logiikkaa
+            if (currentScrollY > lastScrollY && currentScrollY > 50) {
+                nav.classList.add('nav-hidden');
+            } else {
+                nav.classList.remove('nav-hidden');
+            }
         }
     } else {
-        // Varmistetaan, että työpöydällä palkki on aina näkyvissä
         nav.classList.remove('nav-hidden');
     }
-    lastScrollY = window.scrollY;
+    lastScrollY = currentScrollY;
 });
 
-// Paremmin toimiva sähköposti formi
+// SÄHKÖPOSTI FUNKTIO
 var form = document.getElementById("my-form");
 
 async function handleSubmit(event) {
@@ -176,7 +184,7 @@ async function handleSubmit(event) {
 form.addEventListener("submit", handleSubmit);
 
 
-// Etsi nappi, joka avaa koodin (varmista että napilla on id="open-powershell")
+// FUNKTIO POWERSHELL.HTML MODAALIIN AVAMISEEN
 const openBtn = document.getElementById("open-powershell");
 const modal = document.getElementById("powershell-modal");
 const modalBody = document.getElementById("modal-body");
@@ -209,6 +217,7 @@ window.onclick = function(event) {
     }
 }
 
+// FUNKTIO THESIS_CONTENT.HTML MODAALIIN AVAMISEEN
 const openThesisBtn = document.getElementById("open-thesis");
 const thesisModal = document.getElementById("thesis-modal");
 const closeThesisBtn = document.querySelector(".close-thesis-modal");
@@ -230,3 +239,66 @@ closeThesisBtn.onclick = function() {
     document.body.style.overflow = "auto";
 }
 
+// FUNKTIO KOODIN KOPIOMISEEN POWERSHELL.HTML
+function copyCode() {
+    // Haetaan teksti elementistä, jolla on id "powershell-code"
+    const codeElement = document.getElementById('powershell-code');
+    
+    if (codeElement) {
+        const textToCopy = codeElement.innerText;
+        
+        navigator.clipboard.writeText(textToCopy).then(() => {
+            // Muutetaan napin teksti hetkeksi, jotta käyttäjä näkee sen toimineen
+            const copyBtn = document.querySelector('.copy-btn');
+            const originalText = copyBtn.innerText;
+            
+            copyBtn.innerText = "Kopioitu!";
+            copyBtn.style.background = "#28a745"; // Muutetaan väri vihreäksi
+            
+            setTimeout(() => {
+                copyBtn.innerText = originalText;
+                copyBtn.style.background = "#0078d4"; // Palautetaan alkuperäinen
+            }, 2000);
+        }).catch(err => {
+            console.error('Kopiointi epäonnistui: ', err);
+        });
+    }
+}
+
+function fetchStatus() {
+    fetch('status.json?t=' + new Date().getTime())
+        .then(response => response.json())
+        .then(data => {
+            const statusContent = document.getElementById('live-status-content');
+            
+            let trendiTeksti = data.Trendi;
+            let vari = "inherit";
+
+            if (trendiTeksti === "Laskussa") {
+                trendiTeksti = "⬇️ Laskussa";
+                vari = "#ff4d4d"; // Punainen
+            } else if (trendiTeksti === "Kasvussa") {
+                trendiTeksti = "⬆️ Kasvussa";
+                vari = "#28a745"; // Vihreä
+            } else {
+                trendiTeksti = "➡️ Ennallaan";
+            }
+
+            statusContent.innerHTML = `
+                <div style="text-align: left; font-size: 0.9em; line-height: 1.6;">
+                    <p style="border-bottom: 1px solid #444; padding-bottom: 5px; margin-bottom: 10px;">
+                        <strong><i class="fa-solid fa-microchip"></i> Diagnostiikka (PS1 + SQL)</strong>
+                    </p> 
+                    <p><strong><i class="fa-solid fa-clock"></i> Päivitetty:</strong> ${data.Pvm}</p>
+                    <p><strong><i class="fa-solid fa-desktop"></i> Isäntä:</strong> ${data.Kone}</p>
+                    <p><strong><i class="fa-solid fa-hard-drive"></i> Vapaa tila:</strong> ${data.Levy}</p>
+                    <p><strong><i class="fa-solid fa-chart-line"></i> Levytila:</strong> <span style="color: ${vari}; font-weight: bold;">${trendiTeksti}</span></p>
+                    <p><strong><i class="fa-solid fa-shield"></i> Päivitykset:</strong> ${data.Paivitykset}</p>
+                </div>
+            `;
+        })
+        .catch(err => {
+            console.error("Virhe ladattaessa JSONia:", err);
+            document.getElementById('live-status-content').innerHTML = "<p>Tilaa ei saatavilla. Odota automaattista päivitystä.</p>";
+        });
+}

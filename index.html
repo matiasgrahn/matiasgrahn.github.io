@@ -21,7 +21,7 @@
                 <a href="#aloitus">[0] Aloitus</a>
                 <a href="#profiili">[1] Profiili</a>
                 <a href="#projektit">[2] Projektit</a>
-                <a href="#dokumentit">[3] Yhteystiedot & Dokumentit</a>
+                <a href="#dokumentit">[3] Yhteystiedot & Dokumentit (PDF)</a>
             </div>
                 <div class="nav-center"> 
                 <div class="theme-switch-wrapper">
@@ -81,8 +81,8 @@
                 <p>Erikoisosaamiseni ydin sijoittuu <strong>tietotekniikan, järjestelmätekniikan ja fyysisen teknologian risteyskohtaan</strong>. Viimeistelen parhaillaan opinnäytetyötäni teollisuusväylien (Modbus/CAN-bus) kyberturvallisuudesta. Tekninen taustani ja kokemukseni fyysisistä laitteistoista antavat minulle vahvan ymmärryksen monimutkaisista kokonaisuuksista.</p>
                 <p>Etsin haastavaa työtä, jossa voin hyödyntää analyyttistä ongelmanratkaisukykyäni ja taitoani tarttua monipuolisiin teknisiin tehtäviin tehokkaasti.</p>
             </div>
-            <span href="#" id="" class="thesis-btn">
-                Lue lisää opinnäytetyöstä (Sivu ei toimi vielä) <i class="fa-solid fa-arrow-right"></i>
+            <span href="#" id="open-thesis" class="thesis-btn">
+                Lue lisää opinnäytetyöstä <i class="fa-solid fa-arrow-right"></i>
             </span>
 
           
@@ -116,7 +116,7 @@
                 <div class="skill-sphere">
                     <span class="skill-icon"><i class="fas fa-gamepad"></i></span>
                     <div class="skill-popup">
-                        <h4>Harrastuks et</h4>
+                        <h4>Harrastukset</h4>
                         <p>Boulderointi, koodausprojektit, pelaaminen ja jatkuva oppiminen</p>
                     </div>
                 </div>
@@ -154,6 +154,15 @@
                 </div>
             </div>
             <span href="#" id="open-powershell" class="btn linkedin-nappi">Katso koodi</span>
+        </div>
+
+        <div class="contact-card" id="status-section">
+            <h3><i class="fa-solid fa-microchip"></i> Laitteen Live-tila</h3>
+            <div id="live-status-content">
+                <p>Päivitetään tietoja...</p>
+            </div>
+            <button onclick="fetchStatus()" class="copy-btn" style="margin-top:15px; width: 100%;">
+            <i class="fa-solid fa-rotate"></i> Päivitä tila </button>
         </div>
 
         <div class="project-card">
@@ -235,6 +244,7 @@
             </div>
             <a href="https://github.com/matiasgrahn/Tabata-Timer-Android" class="btn linkedin-nappi"> <i class="fa-brands fa-github"></i> GitHub</a>
         </div>
+
         <a href="#dokumentit" class="scroll-down">
             <div class="scroll-arrow">
                 <i class="fa-solid fa-chevron-down"></i> </div>
@@ -287,7 +297,7 @@
         </div>
 
         <div class="contact-value">
-            <span>Uusimaa, Suomi</span>
+            <span>Helsinki, Suomi</span>
         </div>
         </div>
 
@@ -304,7 +314,7 @@
         </div>
 
       <div class="contact-card">
-    <h3>Dokumentit</h3>
+    <h3>Dokumentit (PDF)</h3>
     <div class="doc-columns-wrapper">
         <div class="doc-column">
             <a href="MatiasGrahn_CV_FI_2026.pdf" target="_blank" class="doc-link">
@@ -332,21 +342,20 @@
 </div>
 
     </div>
-
-<div id="powershell-modal" class="modal">
-    <div class="modal-content">
-        <span class="close-modal">&times;</span>
-        <div id="modal-body">
-            </div>
+    <!-- MODAALIT POWERSHELL JA OPPARI -->
+    <div id="powershell-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="modal-body"> </div>
+        </div>
     </div>
-</div>
 
-<div id="thesis-modal" class="modal">
-    <div class="modal-content">
-        <span class="close-thesis-modal close-modal">&times;</span>
-        <div id="thesis-modal-body">
-            </div>
+    <div id="thesis-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-thesis-modal close-modal">&times;</span>
+            <div id="thesis-modal-body"></div>
+        </div>
     </div>
-</div>
+
 </body>
 </html>

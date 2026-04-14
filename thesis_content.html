@@ -1,21 +1,46 @@
-<h2 style="margin-top: 0; color: #0077b5;">Cybersecurity Threats in Embedded Systems</h2>
-<p style="font-style: italic; color: #888;">Opinnäytetyö (Työn alla - 2026)</p>
+<div class="thesis-container">
+    <h2 style="margin-top: 0; color: #0077b5;">Kyberturvallisuus upotetuissa järjestelmissä</h2>
+    <button class="copy-btn" style="background: #0078d4; color: white; border: none; padding: 5px 12px; border-radius: 4px; cursor: pointer; margin-bottom: 15px;">
+            Lataa opinnäytetyö (PDF) (Ei toimi vielä)
+            </button>
 
-<div class="thesis-intro" style="margin-bottom: 20px;">
-    <p>Tutkimus keskittyy teollisuusprotokollien (kuten Modbus ja CAN bus) haavoittuvuuksiin upotetuissa järjestelmissä.</p>
-</div>
+    <p style="font-style: italic; color: #888; margin-bottom: 20px;">Opinnäytetyö (2026) • Erikoistumisalue: OT-tietoturva</p>
+    <section style="margin-bottom: 25px;">
+        <p>Tutkimukseni keskiössä on teollisuusympäristöjen suojaaminen. Käytän työssäni itse kehittämääni visualisointia Purdue-mallista (PERA), joka auttaa ymmärtämään verkon segmentoinnin merkitystä upotetuissa järjestelmissä.</p>
+    </section>
 
-<h3 style="color: #0077b5;">Keskeinen viitekehys: Purdue-malli (PERA)</h3>
-<p>Käytän työssäni Purdue-mallia verkon segmentoinnin ja tietoturvan perustana:</p>
+    <div class="thesis-image-container" style="text-align: center; margin-bottom: 25px;">
+        <img src="Picture1.png" alt="Oma Purdue-malli" style="width: 100%; max-width: 500px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+        <p style="font-size: 0.8rem; color: #666; margin-top: 10px;">Kuva 1: Visualisointi teollisuusverkon tasoista ja protokollia koskevista rajapinnoista.</p>
+    </div>
 
+    <section style="background: #1a1a1a; padding: 20px; border-radius: 10px; margin-bottom: 25px;">
+        <h3 style="color: #0077b5; margin-top: 0;">Analyysi: Luvut 2.2 (Sivut 15–16)</h3>
+        <p>Työssäni pureudun erityisesti seuraaviin kriittisiin kohtiin:</p>
+        <ul style="line-height: 1.6;">
+            <li><strong>Level 1 (Basic Control):</strong> Miten CAN-bus ja Modbus (RTU) suojataan fyysisellä tasolla.</li>
+            <li><strong>Level 2 (Supervisory Control):</strong> SCADA-työasemien ja HMI-laitteiden välinen Modbus (TCP) -liikenne ja sen monitorointi.</li>
+            <li><strong>Level 3.5 (DMZ):</strong> "Air gap" -ajattelun ja Jump Serverien merkitys tietoturvallisessa etähallinnassa.</li>
+        </ul>
+    </section>
 
+    <section>
+        <h3>Käytännön soveltaminen</h3>
+        <p>Opinnäytetyö ei ole vain teoriaa, vaan se antaa suosituksia siitä, miten palomuurit (kuvassa mustat tiiliseinät) tulisi konfiguroida estämään sivuttaisliike (lateral movement) IT-verkon ja tuotantoverkon välillä.</p>
+    </section>
 
-<ul style="line-height: 1.6; margin-left: 15px !important;">
-    <li><strong>Tasot 0-2:</strong> Tuotantoprosessit ja ohjauslaitteet (esim. PLC).</li>
-    <li><strong>Taso 3:</strong> Teollisuuden ohjausjärjestelmät ja DMZ-alueet.</li>
-    <li><strong>Tasot 4-5:</strong> Yritysverkko ja ulkoiset palvelut.</li>
-</ul>
-
-<div style="background: #1a1a1a; padding: 15px; border-left: 4px solid #0077b5; margin-top: 20px;">
-    <p><strong>Nykytila:</strong> Työssä analysoidaan, miten hyökkääjä voi hyödyntää suojaamattomia protokollia päästäkseen käsiksi kriittiseen infrastruktuuriin ja miten tämä estetään segmentoinnilla.</p>
+    <section style="margin-top: 30px; border: 2px dashed #d9534f; padding: 20px; border-radius: 10px; background: rgba(217, 83, 79, 0.05);">
+    <h3 style="color: #d9534f; margin-top: 0;"><i class="fa-solid fa-triangle-exclamation"></i> Esimerkki skenaario: Sosiaalinen manipulointi</h3>
+    <p><strong>Skenaario:</strong> Hyökkääjä tekeytyy työnhakijaksi ja lähettää portfolio-linkin kohdeyrityksen insinöörille.</p>
+    
+    <div style="background: #222; padding: 15px; border-radius: 5px; font-family: monospace; font-size: 0.85rem; color: #eee;">
+        <p style="color: #888; margin-bottom: 5px;">// Hyökkäysvektori</p>
+        1. Käyttäjä klikkaa "Lataa CV" -painiketta.<br>
+        2. Selain lataa ja suorittaa piilotetun hyökkäysvektorin.<br>
+        3. Hyökkääjä saa etähallinnan (C2) IT-verkon laitteeseen.<br>
+        4. Hyökkääjä pyrkii etenemään Purdue-mallin tasolta 4 kohti tuotantoverkkoa (Taso 2-3).
+    </div>
+    
+    <p style="margin-top: 15px; font-size: 0.9rem;">Tämä korostaa sitä, että <strong>ihminen on usein heikoin lenkki</strong>. Vaikka teollisuusverkko olisi segmentointu hyvin, saastunut ylläpitokone voi tarjota hyökkääjälle "avaimet käteen" -pääsyn kriittiseen infraan.</p>
+</section>
 </div>
