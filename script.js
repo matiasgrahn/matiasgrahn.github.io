@@ -266,13 +266,18 @@ function copyCode() {
 }
 
 function fetchStatus() {
-    fetch('status.json?t=' + new Date().getTime())
+    fetch('http://localhost:3000/api/status')
         .then(response => response.json())
         .then(data => {
             const statusContent = document.getElementById('live-status-content');
-            
             let trendiTeksti = data.Trendi;
             let vari = "inherit";
+
+            const pvmObj = new Date(data.ScanDate);
+            const naytettavaAika = data.ScanDate.split('T')[1].substring(0, 5); // Ottaa vain "14:17"
+            const naytettavaPvm = new Date(data.ScanDate).toLocaleDateString('fi-FI');
+            const lopullinenAikaleima = `${naytettavaPvm} klo ${naytettavaAika}`;
+
 
             if (trendiTeksti === "Laskussa") {
                 trendiTeksti = "⬇️ Laskussa";
@@ -280,18 +285,15 @@ function fetchStatus() {
             } else if (trendiTeksti === "Kasvussa") {
                 trendiTeksti = "⬆️ Kasvussa";
                 vari = "#28a745"; // Vihreä
-            } else {
-                trendiTeksti = "➡️ Ennallaan";
             }
-
             statusContent.innerHTML = `
                 <div style="text-align: left; font-size: 0.9em; line-height: 1.6;">
                     <p style="border-bottom: 1px solid #444; padding-bottom: 5px; margin-bottom: 10px;">
                         <strong><i class="fa-solid fa-microchip"></i> Diagnostiikka (PS1 + SQL)</strong>
                     </p> 
-                    <p><strong><i class="fa-solid fa-clock"></i> Päivitetty:</strong> ${data.Pvm}</p>
-                    <p><strong><i class="fa-solid fa-desktop"></i> Isäntä:</strong> ${data.Kone}</p>
-                    <p><strong><i class="fa-solid fa-hard-drive"></i> Vapaa tila:</strong> ${data.Levy}</p>
+                    <p><strong><i class="fa-solid fa-clock"></i> Päivitetty:</strong> ${lopullinenAikaleima}</p>
+                    <p><strong><i class="fa-solid fa-desktop"></i> Isäntä:</strong> ${data.ComputerName}</p>
+                    <p><strong><i class="fa-solid fa-hard-drive"></i> Vapaa tila:</strong> ${data.Levytila}</p>
                     <p><strong><i class="fa-solid fa-chart-line"></i> Levytila:</strong> <span style="color: ${vari}; font-weight: bold;">${trendiTeksti}</span></p>
                     <p><strong><i class="fa-solid fa-shield"></i> Päivitykset:</strong> ${data.Paivitykset}</p>
                 </div>
@@ -299,6 +301,6 @@ function fetchStatus() {
         })
         .catch(err => {
             console.error("Virhe ladattaessa JSONia:", err);
-            document.getElementById('live-status-content').innerHTML = "<p>Tilaa ei saatavilla. Odota automaattista päivitystä (Päivitys toimii vain kontitetussa ympäristössä tai live-serverillä !).</p>";
+            document.getElementById('live-status-content').innerHTML = "<p>Tilaa ei saatavilla. Odota automaattista päivitystä (Päivitys toimii vain kontitetussa ympäristössä tai live-serverillä !)</p>";
         });
 }

@@ -93,8 +93,8 @@ try {
 }
 
 # Muodostetaan SQL-lause. Huom: $($Uptime.Days) varmistaa että lähtee pelkkä numero.
-$SqlQuery = "INSERT INTO SystemDiagnostics (ComputerName, Suoritin, UptimeDays, OSVersion, NetworkStatus, IP, Levytila, Paivitykset) 
-             VALUES ('$Laitetunnus','$Arkkitehtuuri', $($Uptime.Days), '$OS', '$NetStatus', '$IP', '$VapaaGB', '$Count kpl')"
+$SqlQuery = "INSERT INTO SystemDiagnostics (ComputerName, Suoritin, UptimeDays, OSVersion, NetworkStatus, IP, Levytila, Paivitykset, Trendi) 
+             VALUES ('$Laitetunnus','$Arkkitehtuuri', $($Uptime.Days), '$OS', '$NetStatus', '$IP', '$VapaaGB', '$Count kpl', '$TrendiIcon')"
 
 try {
     # Suoritetaan komento
