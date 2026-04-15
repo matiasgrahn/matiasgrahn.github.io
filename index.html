@@ -11,17 +11,36 @@
 </head>
 <body>
     <div class="bg-blob blob-1"></div>
-    <div class="bg-blob blob-2"></div> 
+    <div class="bg-blob blob-2"></div>
+    
+    
+    <div id="chat-bubble" onclick="toggleChat()">
+        <span>💬</span>
+    </div>
+
+<div id="chat-window" class="chat-hidden">
+    <div id="chat-header">
+        <strong>Matias AI Assistant</strong>
+        <button onclick="toggleChat()">×</button>
+    </div>
+    <div id="chat-messages">
+        <div class="message bot-message">Moi! Olen Matiaksen tekoälyassistentti. Miten voin auttaa?</div>
+    </div>
+    <div id="chat-input-area">
+        <input type="text" id="chat-input" placeholder="Kysy jotain...">
+        <button id="send-btn">➤</button>
+    </div>
+</div>
     
     <div class="container">
         <nav class="top-nav">
         <div class="nav-container">
-
+            <button id="lang-btn" onclick="toggleLanguage()" class="lang-switch">EN</button>
             <div class="nav-links">
-                <a href="#aloitus">[0] Aloitus</a>
-                <a href="#profiili">[1] Profiili</a>
-                <a href="#projektit">[2] Projektit</a>
-                <a href="#dokumentit">[3] Yhteystiedot & Dokumentit (PDF)</a>
+                <a href="#aloitus" id="nav-0">[0] Home</a>
+                <a href="#profiili" id="nav-1">[1] Profile</a>
+                <a href="#projektit" id="nav-2">[2] Projects</a>
+                <a href="#dokumentit" id="nav-3">[3] Contacts & Documents (PDF)</a>
             </div>
                 <div class="nav-center"> 
                 <div class="theme-switch-wrapper">
@@ -35,7 +54,6 @@
             <div class="nav-right">
                 <span class="top-name-label">MATIAS GRAHN</span>
             </div>
-
         </div>
     </nav>
     <!-- SIVU 1 ALKAA TÄSTÄ -->
@@ -43,7 +61,7 @@
         
         <header>
             <h1>Matias Grahn</h1>
-            <p class="subtitle">IT-insinööriopiskelija | Tekniikan moniosaaja</p>
+            <p id="heroSubtitle" class="subtitle">IT Engineering Student | Multi-skilled Tech Enthusiast</p>
         </header>
 
         <div class="profile-header">
@@ -51,7 +69,7 @@
             <img src="profiilikuva.jpg" alt="Matias Grahn" class="profile-pic">
         </div>
         <a href="#video-esittely" class="btn video-btn" id="play-video-btn">
-            <i class="fa-solid fa-play"></i> Katso esittelyvideo
+            <i class="fa-solid fa-play" > </i> Introduction Video (Finnish)
         </a>
 
         <a href="#profiili" class="scroll-down">
@@ -77,12 +95,12 @@
 
             
             <div class="description">
-                <p>Tervetuloa profiilisivulleni! Olen loppusuoran IT-insinööriopiskelija, jolla on vahva käytännön tekninen tausta.</p>
-                <p>Erikoisosaamiseni ydin sijoittuu <strong>tietotekniikan, järjestelmätekniikan ja fyysisen teknologian risteyskohtaan</strong>. Viimeistelen parhaillaan opinnäytetyötäni teollisuusväylien (Modbus/CAN-bus) kyberturvallisuudesta. Tekninen taustani ja kokemukseni fyysisistä laitteistoista antavat minulle vahvan ymmärryksen monimutkaisista kokonaisuuksista.</p>
-                <p>Etsin haastavaa työtä, jossa voin hyödyntää analyyttistä ongelmanratkaisukykyäni ja taitoani tarttua monipuolisiin teknisiin tehtäviin tehokkaasti.</p>
+                <p>Welcome to my profile! I am a final-year IT Engineering student with a strong practical and technical background.</p>
+                <p>My expertise lies at the <strong>intersection of Information Technology, Systems Engineering, and Physical Technology.</strong>I am currently finishing my Bachelor's thesis on the cybersecurity of industrial buses (Modbus/CAN-bus). My technical background and experience with physical hardware provide me with a deep understanding of complex system architectures.</p>
+                <p>I am looking for a challenging role where I can utilize my analytical problem-solving skills and my ability to efficiently tackle diverse technical tasks.</p>
             </div>
             <span href="#" id="open-thesis" class="thesis-btn">
-                Lue lisää opinnäytetyöstä <i class="fa-solid fa-arrow-right"></i>
+                Read more about my Thesis <i class="fa-solid fa-arrow-right"></i>
             </span>
 
           
@@ -92,32 +110,32 @@
                 <div class="skill-sphere it">
                     <span class="skill-icon"><i class="fas fa-laptop-code"></i></span>
                     <div class="skill-popup">
-                        <h4>IT-Osaaminen</h4>
-                        <p>Vianetsintä, laitteistot, verkot ja kyberturvallisuus.</p>
+                        <h4>IT-Knowledge</h4>
+                        <p>Troubleshooting, Hardware, Networking, and Cybersecurity.</p>
                     </div>
                 </div>
 
                 <div class="skill-sphere">
                     <span class="skill-icon"><i class="fas fa-microchip"></i></span>
                     <div class="skill-popup">
-                        <h4>Teknologia</h4>
-                        <p>JavaScript, HTML/CSS, C++, Python ja Modbus.</p>
+                        <h4>Teknologies</h4>
+                        <p>JavaScript, HTML/CSS, C++, Python and Modbus.</p>
                     </div>
                 </div>
 
                 <div class="skill-sphere">
                     <span class="skill-icon"><i class="fas fa-tools"></i></span>
                     <div class="skill-popup">
-                        <h4>Muut taidot</h4>
-                        <p>Projektinhallinta, tiimityöskentely ja tekninen dokumentointi</p>
+                        <h4>Other skills</h4>
+                        <p>Project-management, teamwork and technical documentation.</p>
                     </div>
                 </div>
 
                 <div class="skill-sphere">
                     <span class="skill-icon"><i class="fas fa-gamepad"></i></span>
                     <div class="skill-popup">
-                        <h4>Harrastukset</h4>
-                        <p>Boulderointi, koodausprojektit, pelaaminen ja jatkuva oppiminen</p>
+                        <h4>Hobbies</h4>
+                        <p>Bouldering, coding projects, gaming and continuos learning</p>
                     </div>
                 </div>
 
@@ -135,40 +153,39 @@
 
     <!-- SIVU 3 ALKAA TÄSTÄ -->
     <section id="projektit" class="full-page">
-        <h2>Projektit</h2>
+        <h2>Projects</h2>
         <div>
             <p class = "kuvaus">
-                    <strong>Kuvaus: </strong> Tällä sivulla löytyy tekemiäni projekteja, ja yritän aktiivesti päivitellä tätä sivua
-                    sen mukaan kuin projekteja valmistuu tai keksin ideoita.
+                    <strong>Description: </strong>This page features projects I have worked on, and I am actively updating this site as new projects are completed or whenever I come up with new ideas
                 </p>
         </div>
         <div class="projects-wrapper">
             <div class="project-card">
             <div>
-                <h3>PowerShell Diagnostiikka</h3>
-                <p><strong>Kuvaus:</strong> Automatisoitu vianmääritystyökalu IT-tuen avuksi. Hakee Uptimen, päivitystilanteen ja verkkoyhteyden yhdellä ajolla.</p>
+                <h3>PowerShell Diagnostics</h3>
+                <p><strong>Description: </strong><br>A PowerShell-based tool designed to assist IT support by automating diagnostic tasks. It retrieves system uptime, update status, and network connectivity details in a single execution.</p>
                 <div class="project-tags">
                     <span class="tag">PowerShell</span>
                     <span class="tag">Automation</span>
-                    <span class="tag">IT-tuki</span>
+                    <span class="tag">IT-support</span>
                 </div>
             </div>
-            <span href="#" id="open-powershell" class="btn linkedin-nappi">Katso koodi</span>
+            <span href="#" id="open-powershell" class="btn linkedin-nappi">Check code</span>
         </div>
 
         <div class="contact-card" id="status-section">
-            <h3><i class="fa-solid fa-microchip"></i> Laitteen Live-tila</h3>
+            <h3><i class="fa-solid fa-microchip"></i> Device live-mode</h3>
             <div id="live-status-content">
-                <p>Päivitetään tietoja...</p>
+                <p>Updating Status...</p>
             </div>
             <button onclick="fetchStatus()" class="copy-btn" style="margin-top:15px; width: 100%;">
-            <i class="fa-solid fa-rotate"></i> Päivitä tila </button>
+            <i class="fa-solid fa-rotate"></i> Update Status </button>
         </div>
 
         <div class="project-card">
             <div>
                 <h3>Windows Server Lab</h3>
-                <p><strong>Kuvaus:</strong> Windows Server 2022 -ympäristön pystytys, Active Directoryn hallinta ja GPO-käytäntöjen määrittely.</p>
+                <p><strong>Description:</strong><br>Windows Server 2022 deployment, Active Directory administration, and Group Policy (GPO) configuration.</p>
                 <div class="project-tags">
                     <span class="tag">AD DS</span>
                     <span class="tag">Windows Server 2022</span>
@@ -181,7 +198,7 @@
         <div class="project-card">
             <div>
                 <h3>C++ Crypt Vault</h3>
-                <p><strong>Kuvaus:</strong> Dear ImGui -pohjainen graafinen käyttöliittymä ja bittitason tiedostonkäsittely salausta varten.</p>
+                <p><strong>Description:</strong><br>Dear ImGui -based graphical user interface & bit-level file encryption</p>
                 <div class="project-tags">
                     <span class="tag">C++</span>
                     <span class="tag">UI</span>
@@ -193,12 +210,12 @@
 
         <div class="project-card">
             <div>
-                <h3>Teollisuusdatan kerääjä & Visualisoija (Python)</h3>
-                <p><strong>Kuvaus:</strong>Kehitin Python-sovelluksen, joka kerää teoreettisesti dataa teollisuuslaitteista Modbus TCP-protokollalla.</p>
+                <h3>Industrial Data Collector & Visualizer (Python)</h3>
+                <p><strong>Description:</strong><br>A Python-based solution developed for harvesting and visualizing real-time industrial data.</p>
                 <div class="project-tags">
                     <span class="tag">Python</span>
                     <span class="tag">Modbus</span>
-                    <span class="tag">Teollisuus</span>
+                    <span class="tag">Industry</span>
                 </div>
             </div>
             <a href="https://github.com/matiasgrahn/modbus-logger-python" class="btn linkedin-nappi"> <i class="fa-brands fa-github"></i> GitHub</a>
@@ -206,10 +223,8 @@
 
          <div class="project-card">
             <div>
-                <h3>Porfolio - sivu</h3>
-                <p><strong>Kuvaus:</strong> 
-                    Tavoitteenani on pitää portfolio elävänä dokumenttina taidoistani ja kokeilla käytännössä, 
-                    miten eri komponentit ja rajapinnat saadaan toimimaan saumattomasti yhteen.</p>
+                <h3>Professional porfolio</h3>
+                <p><strong>Description:</strong><br>My goal is to keep this portfolio as a living document of my skills and to practically explore how different components and interfaces can be seamlessly integrated to work together.</p>
                 <div class="project-tags">
                     <span class="tag">HTML</span>
                     <span class="tag">CSS</span>
@@ -221,8 +236,8 @@
 
           <div class="project-card">
             <div>
-                <h3>Microsoft Entra ID (Azure AD) Hallinta</h3>
-                <p><strong>Kuvaus:</strong> Pilvipohjainen identiteetinhallinta-projekti, jossa testaan käyttäjähallintaa, turvallisuuskäytäntöjä ja pilviresurssien lisensointia.</p>
+                <h3>Microsoft Entra ID (Azure AD) Administration</h3>
+                <p><strong>Description:</strong><br>Managing cloud-based identity and access solutions using Microsoft Entra ID. Expertise includes user management, group policies, and securing cloud environments with modern identity governance.</p>
                 <div class="project-tags">
                     <span class="tag">Microsoft Entra ID</span>
                     <span class="tag">IAM</span>
@@ -234,8 +249,8 @@
 
           <div class="project-card">
             <div>
-                <h3>Tabata tyylinen mobiilisovellus (Adroid)</h3>
-                <p><strong>Kuvaus:</strong> Moderni Android-treenisovellus, joka on toteutettu Jetpack Composella. Projekti korostaa sujuvaa käyttäjäkokemusta ja teknistä viimeistelyä.</p>
+                <h3>Tabata styled mobile application (Adroid)</h3>
+                <p><strong>Description:</strong><br>A modern Android training application built with Jetpack Compose. The project emphasizes a seamless user experience (UX) and high-level technical polish.</p>
                 <div class="project-tags">
                     <span class="tag">Adroid Development</span>
                     <span class="tag">Jetpack Compose</span>
@@ -255,37 +270,37 @@
     <!-- SIVU 4 ALKAA TÄSTÄ --> 
     <section id="dokumentit" class="full-page">
     <div class="section-header">
-        <h2>Yhteystiedot & Dokumentit</h2>
-        <p>Onko sinulla kysyttävää opinnäytetyöstäni tai haluatko keskustella mahdollisesta työpaikasta?</p>
+        <h2>Contacts & Documents (PDF)</h2>
+        <p>Do you have any questions about my thesis, or would you like to discuss potential career opportunities?</p>
     </div>
 
     <div class="contact-grid">
     <div class="contact-card wide">
-            <h3 style="margin-left: auto;">Ota Yhteyttä !</h3>
+            <h3 style="margin-left: auto;">Get in contact !</h3>
             <p class="contact-value">matiasgrahn@hotmail.com</p>
             <p class="contact-value">050 353 6651</p>
 
         <div class="contact-container">
             <form id="my-form" class="contact-form">
-            <h3 style="color: black;" >Lähetä viesti suoraan tästä </h3>
+            <h3 style="color: black;" >Send message straight from this </h3>
         
             <div class="form-group">
-                <input type="email" name="email" required placeholder="Sähköpostisi">
+                <input type="email" name="email" required placeholder="Your Email">
             </div>
         
             <div class="form-group">
-                <textarea name="message" required placeholder="Kirjoita viestisi tähän..."></textarea>
+                <textarea name="message" required placeholder="Type your message here..."></textarea>
             </div>
 
             <button type="submit" class="btn">
-                <i class="fa-regular fa-paper-plane"></i> Lähetä viesti
+                <i class="fa-regular fa-paper-plane"></i> Send message
             </button>
             </form>
         </div>
     </div>
 
         <div class="contact-card location-card">
-        <h3>Sijainti</h3>
+        <h3>Location</h3>
     
         <div class="map-wrapper">
             <img src="helsinki.png " alt="Uusimaa Map" class="map-bg">
@@ -297,7 +312,7 @@
         </div>
 
         <div class="contact-value">
-            <span>Helsinki, Suomi</span>
+            <span>Helsinki, Finland</span>
         </div>
         </div>
 
@@ -314,7 +329,7 @@
         </div>
 
       <div class="contact-card">
-    <h3>Dokumentit (PDF)</h3>
+    <h3>Documents (PDF)</h3>
     <div class="doc-columns-wrapper">
         <div class="doc-column">
             <a href="MatiasGrahn_CV_FI_2026.pdf" target="_blank" class="doc-link">

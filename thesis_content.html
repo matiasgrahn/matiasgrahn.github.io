@@ -1,46 +1,46 @@
 <div class="thesis-container">
-    <h2 style="margin-top: 0; color: #0077b5;">Kyberturvallisuus upotetuissa järjestelmissä</h2>
+    <h2 style="margin-top: 0; color: #0077b5;">Cybersecurity in Embedded Systems</h2>
     <button class="copy-btn" style="background: #0078d4; color: white; border: none; padding: 5px 12px; border-radius: 4px; cursor: pointer; margin-bottom: 15px;">
-            Lataa opinnäytetyö (PDF) (Ei toimi vielä)
+            Download thesis (Does not work yet !)
             </button>
 
-    <p style="font-style: italic; color: #888; margin-bottom: 20px;">Opinnäytetyö (2026) • Erikoistumisalue: OT-tietoturva</p>
+    <p style="font-style: italic; color: #888; margin-bottom: 20px;">Thesis (2026) • Case study of Industrial protocols (Modbus & CAN-bus)</p>
     <section style="margin-bottom: 25px;">
-        <p>Tutkimukseni keskiössä on teollisuusympäristöjen suojaaminen. Käytän työssäni itse kehittämääni visualisointia Purdue-mallista (PERA), joka auttaa ymmärtämään verkon segmentoinnin merkitystä upotetuissa järjestelmissä.</p>
+        <p>My research focuses on securing industrial environments. I utilize a self-developed visualization of the Purdue Model (PERA) to illustrate the importance of network segmentation in embedded systems.</p>
     </section>
 
     <div class="thesis-image-container" style="text-align: center; margin-bottom: 25px;">
         <img src="Picture1.png" alt="Oma Purdue-malli" style="width: 100%; max-width: 500px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
-        <p style="font-size: 0.8rem; color: #666; margin-top: 10px;">Kuva 1: Visualisointi teollisuusverkon tasoista ja protokollia koskevista rajapinnoista.</p>
+        <p style="font-size: 0.8rem; color: #666; margin-top: 10px;">Figure 1: Visualization of industrial network layers and protocol-specific interfaces.</p>
     </div>
 
     <section style="background: #1a1a1a; padding: 20px; border-radius: 10px; margin-bottom: 25px;">
-        <h3 style="color: #0077b5; margin-top: 0;">Analyysi: Luvut 2.2 (Sivut 15–16)</h3>
-        <p>Työssäni pureudun erityisesti seuraaviin kriittisiin kohtiin:</p>
+        <h3 style="color: #0077b5; margin-top: 0;">Analysis: Chapter 2.2</h3>
+        <p>In my work, I specifically focus on the following critical areas:</p>
         <ul style="line-height: 1.6;">
-            <li><strong>Level 1 (Basic Control):</strong> Miten CAN-bus ja Modbus (RTU) suojataan fyysisellä tasolla.</li>
-            <li><strong>Level 2 (Supervisory Control):</strong> SCADA-työasemien ja HMI-laitteiden välinen Modbus (TCP) -liikenne ja sen monitorointi.</li>
-            <li><strong>Level 3.5 (DMZ):</strong> "Air gap" -ajattelun ja Jump Serverien merkitys tietoturvallisessa etähallinnassa.</li>
+            <li><strong>Level 1 (Basic Control):</strong> How CAN-bus and Modbus (RTU) are protected at the physical level.</li>
+            <li><strong>Level 2 (Supervisory Control):</strong> Modbus (TCP) traffic between SCADA workstations and HMI devices and its monitoring.</li>
+            <li><strong>Level 3.5 (DMZ):</strong> The importance of "air gap" thinking and Jump Servers in secure remote management.</li>
         </ul>
     </section>
 
     <section>
-        <h3>Käytännön soveltaminen</h3>
-        <p>Opinnäytetyö ei ole vain teoriaa, vaan se antaa suosituksia siitä, miten palomuurit (kuvassa mustat tiiliseinät) tulisi konfiguroida estämään sivuttaisliike (lateral movement) IT-verkon ja tuotantoverkon välillä.</p>
+        <h3>Practical application</h3>
+        <p>The thesis is not just theory, but provides recommendations on how firewalls (black brick walls in the picture) should be configured to prevent lateral movement between the IT network and the production network.</p>
     </section>
 
     <section style="margin-top: 30px; border: 2px dashed #d9534f; padding: 20px; border-radius: 10px; background: rgba(217, 83, 79, 0.05);">
-    <h3 style="color: #d9534f; margin-top: 0;"><i class="fa-solid fa-triangle-exclamation"></i> Esimerkki skenaario: Sosiaalinen manipulointi</h3>
-    <p><strong>Skenaario:</strong> Hyökkääjä tekeytyy työnhakijaksi ja lähettää portfolio-linkin kohdeyrityksen insinöörille.</p>
+    <h3 style="color: #d9534f; margin-top: 0;"><i class="fa-solid fa-triangle-exclamation"></i> Example scenario: Social manipulation</h3>
+    <p><strong>Scenario:</strong> The attacker pretends to be a job seeker and sends a portfolio link to an engineer at the target company.</p>
     
     <div style="background: #222; padding: 15px; border-radius: 5px; font-family: monospace; font-size: 0.85rem; color: #eee;">
-        <p style="color: #888; margin-bottom: 5px;">// Hyökkäysvektori</p>
-        1. Käyttäjä klikkaa "Lataa CV" -painiketta.<br>
-        2. Selain lataa ja suorittaa piilotetun hyökkäysvektorin.<br>
-        3. Hyökkääjä saa etähallinnan (C2) IT-verkon laitteeseen.<br>
-        4. Hyökkääjä pyrkii etenemään Purdue-mallin tasolta 4 kohti tuotantoverkkoa (Taso 2-3).
+        <p style="color: #888; margin-bottom: 5px;">// Attack vector</p>
+        1. The user clicks the "Upload CV" button.<br>
+        2. The browser downloads and executes a hidden attack vector.<br>
+        3. The attacker gains remote control (C2) over a device in the IT network.<br>
+        4. The attacker aims to progress from level 4 of the Purdue model towards the production network (Level 2-3).
     </div>
     
-    <p style="margin-top: 15px; font-size: 0.9rem;">Tämä korostaa sitä, että <strong>ihminen on usein heikoin lenkki</strong>. Vaikka teollisuusverkko olisi segmentointu hyvin, saastunut ylläpitokone voi tarjota hyökkääjälle "avaimet käteen" -pääsyn kriittiseen infraan.</p>
+    <p style="margin-top: 15px; font-size: 0.9rem;">This highlights that <strong>humans are often the weakest link.</strong> Even if an industrial network is well segmented, a compromised maintenance machine can provide an attacker with turnkey access to critical infrastructure.</p>
 </section>
 </div>
