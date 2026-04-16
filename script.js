@@ -55,54 +55,6 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
-let currentLang = 'fi';
-const translations = {
-    fi: {
-        heroSubtitle: "IT-insinööriopiskelija | Tekniikan moniosaaja",
-        chatWelcome: "Moi! Olen Matiaksen tekoälyassistentti. Miten voin auttaa?",
-        chatPlaceholder: "Kysy jotain...",
-        langBtn: "EN",
-        nav0: "[0] Aloitus",
-        nav1: "[1] Profiili",
-        nav2: "[2] Projektit",
-        nav3: "[3] Yhteystiedot & Dokumentit (PDF)",
-        esittelyvideoEn: "Katso esittelyvideo"
-    },
-    en: {
-        heroSubtitle: "IT Engineering Student | Multi-skilled Tech Enthusiast",
-        chatWelcome: "Hi! I'm Matias's AI Assistant. How can I help you?",
-        chatPlaceholder: "Ask something...",
-        langBtn: "FI",
-        nav0: "[0] Home",
-        nav1: "[1] Profile",
-        nav2: "[2] Projects",
-        nav3: "[3] Contacts & Documents (PDF)",
-        esittelyvideoEn: "Check introduction video (Finnish)"
-    }
-};
-
-function toggleLanguage() {
-    currentLang = currentLang === 'fi' ? 'en' : 'fi';
-    
-    // 1. Päivitetään Navigaatio (Varmista että ID:t nav-0, nav-1... löytyvät HTML:stä)
-    document.getElementById('nav-0').innerText = translations[currentLang].nav0;
-    document.getElementById('nav-1').innerText = translations[currentLang].nav1;
-    document.getElementById('nav-2').innerText = translations[currentLang].nav2;
-    document.getElementById('nav-3').innerText = translations[currentLang].nav3;
-    document.getElementById('heroSubtitle').innerText = translations[currentLang].heroSubtitle;
-    document.getElementById('esittelyvideoEn').innerText = translations[currentLang].esittelyvideoEn;
-    
-    // 3. Päivitetään Chatbotin ensimmäinen viesti ja placeholder
-    // Lisää HTML:ään id="first-bot-message" siihen ekaan bot-message diviin!
-    const firstMsg = document.querySelector('.bot-message');
-    if (firstMsg) firstMsg.innerText = translations[currentLang].chatWelcome;
-    
-    document.getElementById('chat-input').placeholder = translations[currentLang].chatPlaceholder;
-    
-    // 4. Päivitetään kytkinnapin teksti
-    document.getElementById('lang-btn').innerText = translations[currentLang].langBtn;
-}
-
 // Korjaus "takaisin-nappiin" ja swaippaamiseen
 window.addEventListener('pageshow', (event) => {
     // Jos event.persisted on true, sivu ladattiin selaimen välimuistista (back-button)
@@ -147,6 +99,7 @@ navLinks.forEach(link => {
         }
     });
 });
+
 
 // VIDEO BOXIN AVAUS 
 videoBtn.addEventListener('click', (e) => {
@@ -310,7 +263,7 @@ function copyCode() {
         });
     }
 }
-
+// FUNKTIO PoweShell datan hakuun
 function fetchStatus() {
     fetch('http://localhost:3000/api/status')
         .then(response => response.json())
@@ -347,7 +300,7 @@ function fetchStatus() {
         })
         .catch(err => {
             console.error("Virhe ladattaessa JSONia:", err);
-            document.getElementById('live-status-content').innerHTML = "<p>Tilaa ei saatavilla. Odota automaattista päivitystä (Päivitys toimii vain kontitetussa ympäristössä tai live-serverillä !)</p>";
+            document.getElementById('live-status-content').innerHTML = "<p>Tilaa ei saatavilla. Odota automaattista päivitystä. </p>";
         });
 }
 

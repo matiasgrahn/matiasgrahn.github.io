@@ -5,9 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Matias Grahn - Profiilisivu</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="darkmode.css">
+    <link rel="stylesheet" href="mobileopt.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.3.2/css/flag-icons.min.css">
     <script src="script.js" defer></script>
+    <script src="modbuschart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="bg-blob blob-1"></div>
@@ -20,14 +24,14 @@
 
 <div id="chat-window" class="chat-hidden">
     <div id="chat-header">
-        <strong>Matias AI Assistant (BROKEN)</strong>
+        <strong>Matias AI Assistant</strong>
         <button onclick="toggleChat()"></button>
     </div>
     <div id="chat-messages">
-        <div class="message bot-message">HI! I'm Matias AI assistent. How can i help you?</div>
+        <div class="message bot-message">HI! I'm Matias AI assistant. How can i help you?</div>
     </div>
     <div id="chat-input-area">
-        <input type="text" id="chat-input" placeholder="Does not work at the moment">
+        <input type="text" id="chat-input" placeholder="Type here any questions about Matias...">
         <button id="send-btn">➤</button>
     </div>
 </div>
@@ -35,12 +39,11 @@
     <div class="container">
         <nav class="top-nav">
         <div class="nav-container">
-            <!-- <button id="lang-btn" onclick="toggleLanguage()" class="lang-switch">EN</button> -->
             <div class="nav-links">
-                <a href="#aloitus" id="nav-0">[0] Home</a>
-                <a href="#profiili" id="nav-1">[1] Profile</a>
-                <a href="#projektit" id="nav-2">[2] Projects</a>
-                <a href="#dokumentit" id="nav-3">[3] Contacts & Documents (PDF)</a>
+                <a href="#aloitus" >[0] Home</a>
+                <a href="#profiili">[1] Profile</a>
+                <a href="#projektit" >[2] Projects</a>
+                <a href="#dokumentit">[3] Contacts & Documents (PDF)</a>
             </div>
                 <div class="nav-center"> 
                 <div class="theme-switch-wrapper">
@@ -61,7 +64,7 @@
         
         <header>
             <h1>Matias Grahn</h1>
-            <p id="heroSubtitle" class="subtitle">IT Engineering Student | Multi-skilled Tech Enthusiast</p>
+            <p class="subtitle">IT Engineering Student | Multi-skilled Tech Enthusiast</p>
         </header>
 
         <div class="profile-header">
@@ -91,73 +94,96 @@
     <!-- SIVU 2 ALKAA TÄSTÄ -->
     <section id="profiili" class="full-page">
         <h2>Profile</h2>
-        <div class="info-card">
 
-            
-            <div class="description">
+        <div class="info-card">
+            <div class="description" id="ENdesc">
                 <p>Welcome to my profile! I am a final-year IT Engineering student with a strong practical and technical background.</p>
                 <p>My expertise lies at the <strong>intersection of Information Technology, Systems Engineering, and Physical Technology.</strong>I am currently finishing my Bachelor's thesis on the cybersecurity of industrial buses (Modbus/CAN-bus). My technical background and experience with physical hardware provide me with a deep understanding of complex system architectures.</p>
                 <p>I am looking for a challenging role where I can utilize my analytical problem-solving skills and my ability to efficiently tackle diverse technical tasks.</p>
             </div>
-            <span href="#" id="open-thesis" class="thesis-btn">
-                Read more about my Thesis <i class="fa-solid fa-arrow-right"></i>
-            </span>
+            <span href="#" id="open-thesis" class="thesis-btn">Read more about my Thesis <i class="fa-solid fa-arrow-right"></i> </span>
 
-          
-                <section class="info-card">
-
+            <section class="info-card">
             <div class="skill-container">
                 <div class="skill-sphere it">
                     <span class="skill-icon"><i class="fas fa-laptop-code"></i></span>
-                    <div class="skill-popup">
-                        <h4>IT-Knowledge</h4>
-                        <p>Troubleshooting, Hardware, Networking, and Cybersecurity.</p>
-                    </div>
+                        <div class="skill-popup">
+                            <h4>IT-Knowledge</h4>
+                            <p>Troubleshooting, Hardware, Networking, and Cybersecurity.</p>
+                        </div>
                 </div>
 
                 <div class="skill-sphere">
                     <span class="skill-icon"><i class="fas fa-microchip"></i></span>
-                    <div class="skill-popup">
-                        <h4>Teknologies</h4>
-                        <p>JavaScript, HTML/CSS, C++, Python and Modbus.</p>
-                    </div>
+                        <div class="skill-popup">
+                            <h4>Teknologies</h4>
+                            <p>JavaScript, HTML/CSS, C++, Python and Modbus.</p>
+                        </div>
                 </div>
 
                 <div class="skill-sphere">
                     <span class="skill-icon"><i class="fas fa-tools"></i></span>
-                    <div class="skill-popup">
-                        <h4>Other skills</h4>
-                        <p>Project-management, teamwork and technical documentation.</p>
-                    </div>
+                        <div class="skill-popup">
+                            <h4>Other skills</h4>
+                            <p>Project-management, teamwork and technical documentation.</p>
+                        </div>
                 </div>
 
                 <div class="skill-sphere">
                     <span class="skill-icon"><i class="fas fa-gamepad"></i></span>
-                    <div class="skill-popup">
-                        <h4>Hobbies</h4>
-                        <p>Bouldering, coding projects, gaming and continuos learning</p>
-                    </div>
+                        <div class="skill-popup">
+                            <h4>Hobbies</h4>
+                            <p>Bouldering, coding projects, gaming and continuos learning</p>
+                        </div>
                 </div>
 
             </div>
             </section>  
         </div>
+
         <a href="#projektit" class="scroll-down">
             <div class="scroll-arrow">
                 <i class="fa-solid fa-chevron-down"></i> </div>
         </a>     
     </section>
 
-
-
-
+             
     <!-- SIVU 3 ALKAA TÄSTÄ -->
+    
+     <div id="chartModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Modbus Live-data</h2>
+            
+            <div id="chartContainer" style="height: 400px; width: 100%;">
+                <canvas id="modbusChart"></canvas>
+            </div>
+
+            <div id="videoContainer" style="display:none; width: 100%;">
+                <img id="demoGif" src="" style="width: 100%; border-radius: 8px;">
+            </div>
+
+            <div id="chartContainer" style="height: 400px; width: 100%;">
+                <canvas id="modbusdata_demoGif"></canvas>
+            </div>
+
+            <div id="chartContainer" style="height: 400px; width: 100%;">
+                <canvas id="chatbot_demoGif"></canvas>
+            </div>
+            
+        </div>
+    </div>
+
     <section id="projektit" class="full-page">
         <h2>Projects</h2>
         <div>
             <p class = "kuvaus">
                     <strong>Description: </strong>This page features projects I have worked on, and I am actively updating this site as new projects are completed or whenever I come up with new ideas
                 </p>
+                <h2>Demos (.gifs)</h2>
+                <button class="copy-btn" style="background-color: #0077b5;" onclick="openMyModal('powershell')">Open PowerShell / Live-Mode Demo (Gif)</button>
+                <button class="copy-btn" style="background-color: #0077b5;" onclick="openMyModal('modbus-data')">Open Modbus Demo (Gif)</button>
+                <button class="copy-btn" style="background-color: #0077b5;" onclick="openMyModal('chatbot')">Open Chatbot Demo (Gif)</button>
         </div>
         <div class="projects-wrapper">
             <div class="project-card">
@@ -172,7 +198,7 @@
             </div>
             <span href="#" id="open-powershell" class="btn linkedin-nappi">Check code</span>
         </div>
-
+        
         <div class="contact-card" id="status-section">
             <h3><i class="fa-solid fa-microchip"></i> Device live-mode</h3>
             <div id="live-status-content">
@@ -208,9 +234,11 @@
             <a href="https://github.com/matiasgrahn/MG---Crypt---Vault" class="btn linkedin-nappi"> <i class="fa-brands fa-github"></i> GitHub</a>
         </div>
 
+        
         <div class="project-card">
             <div>
                 <h3>Industrial Data Collector & Visualizer (Python)</h3>
+                <button class="copy-btn" style="margin-top: 10px; margin-bottom: 10px; background-color: #0077b5;" onclick="openMyModal('modbus')">Open Monitoring</button>
                 <p><strong>Description:</strong><br>A Python-based solution developed for harvesting and visualizing real-time industrial data.</p>
                 <div class="project-tags">
                     <span class="tag">Python</span>
@@ -332,18 +360,18 @@
     <h3>Documents (PDF)</h3>
     <div class="doc-columns-wrapper">
         <div class="doc-column">
-            <a href="MatiasGrahn_CV_FI_2026.pdf" target="_blank" class="doc-link">
+            <a href="Documents/MatiasGrahn_CV_FI_2026.pdf" target="_blank" class="doc-link">
                 <i class="fa-solid fa-file-pdf"></i> CV (FI)
             </a>
-            <a href="MatiasGrahn_CV_EN_2026.pdf" target="_blank" class="doc-link">
+            <a href="Documents/MatiasGrahn_CV_EN_2026.pdf" target="_blank" class="doc-link">
                 <i class="fa-solid fa-file-pdf"></i> CV (EN)
             </a>
         </div>
         <div class="doc-column">
-            <a href="Hakemus_Matias_Grahn.pdf" target="_blank" class="doc-link">
+            <a href="Documents/Hakemus_Matias_Grahn.pdf" target="_blank" class="doc-link">
                 <i class="fa-solid fa-file-pdf"></i> Avoin Hakemus (FI)
             </a>
-            <a href="Application_Matias_grahn.pdf" target="_blank" class="doc-link">
+            <a href="Documents/Application_Matias_grahn.pdf" target="_blank" class="doc-link">
                 <i class="fa-solid fa-file-pdf"></i> Open Application (EN)
             </a>
         </div>

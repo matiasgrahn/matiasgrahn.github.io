@@ -1,0 +1,109 @@
+/* --- DARKMODE SWITCH --- */
+
+/* Säiliö, joka pitää kytkimen linjassa navigaatiossa */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 60px; /* Kytkimen kokonaisleveys */
+    height: 30px; /* Kytkimen korkeus */
+}
+
+/* Piilotetaan alkuperäinen checkbox-laatikko kokonaan */
+.theme-checkbox {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* Kytkimen tausta (pilillero) */
+.theme-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: transparent; /* Oletuksena läpinäkyvä (vain reunat näkyy) */
+    border: 2px solid #ffffff; /* Musta reunaviiva, kuten kuvassa */
+    border-radius: 34px;    /* Tekee kytkimestä täysin pyöreän reunoista */
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Liikkuva pallo (pilleron sisällä) */
+.slider-ball {
+    position: absolute;
+    content: "";
+    height: 22px; /* Pallon koko on pienempi kuin kytkimen sisäosa */
+    width: 22px;
+    left: 4px;   /* Pieni rako vasemmalle */
+    bottom: 2px;  /* Pieni rako alas (tasapainotettu reunaviivaan) */
+    background-color: #ffffff; /* Musta pallo oletuksena (light modessa) */
+    border-radius: 50%; /* Tekee pallosta täysin pyöreän */
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Sulava liike */
+}
+
+/* --- TEOSTUKSET DARK-THEMESSA (kun checkbox on valittu) --- */
+
+/* Kun checkbox on valittu, kytkin muuttuu keltaiseksi (lime) */
+.theme-checkbox:checked + .theme-slider {
+     /* Sun teemaväri */
+    border-color: #ffffff;     /* Myös reunaviiva keltaiseksi */
+}
+
+/* Kun checkbox on valittu, pallo liikkuu oikealle */
+.theme-checkbox:checked + .theme-slider .slider-ball {
+    transform: translateX(28px); /* Liikutetaan palloa oikealle (60px - 22px - raot) */
+    background-color: #1a1a1a;  /* Pallo muuttuu tummaksi keltaisen päällä */
+}
+
+/* ==========================================================================
+   9. DARKMODE
+   ========================================================================== */
+
+    body.dark-theme { background-color: #121212; color: #e0e0e0; }
+    body.dark-theme .container { background: rgba(255, 255, 255, 0.05); /* Erittäin läpinäkyvä */ box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    background-image: 
+    radial-gradient(at 0% 100%, rgba(0, 119, 181, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(204, 255, 0, 0.08) 0px, transparent 50%);
+    }
+    body.dark-theme h1, body.dark-theme h2 { color: #fff; }
+    body.dark-theme .project-card { background: #1e1e1e; border-color: #333; border-left: 3px solid #0077b5;
+    background-image: 
+    radial-gradient(at 0% 100%, rgba(0, 119, 181, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(204, 255, 0, 0.08) 0px, transparent 50%);
+    }
+    body.dark-theme .projekti-kuvaus { background: #333; border-left: 4px solid #0077b5}
+    body.dark-theme .tag { background: #333; color: #ddd; border-color: #444; }
+    body.dark-theme .tag:hover {background:#0077b5 }
+    body.dark-theme .subtitle{ color: #ffffff;}
+    body.dark-theme .info-card {background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.1);}
+    body.dark-theme .top-nav {background-color:#0077b5 ;}
+    body.dark-theme .doc-link:hover {color: #0077b5;}
+    body.dark-theme .social-links a:hover {color:#0077b5 ;}
+    body.dark-theme .doc-link:hover{color: #0077b5;}
+    body.dark-theme .contact-card h3{color: #ffffff !important;}
+    body.dark-theme .contact-card {border-left: 3px solid #0077b5;
+    background-image: 
+    radial-gradient(at 0% 100%, rgba(0, 119, 181, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(204, 255, 0, 0.08) 0px, transparent 50%);
+    background: rgba(255, 255, 255, 0.03); /* Todella kevyt tausta */
+    }
+    body.dark-theme .scroll-down {color: #0077b5;}
+    body.dark-theme .contact-card.wide i {color:#0077b5 ;}
+
+    body.dark-theme {
+        /* Tumma teema - syvä ja hieno */
+        background-color: #0b0f14;
+        background-image: 
+            radial-gradient(at 0% 100%, rgba(0, 119, 181, 0.15) 0px, transparent 50%),
+            radial-gradient(at 100% 0%, rgba(204, 255, 0, 0.08) 0px, transparent 50%);   
+    }
+    body.dark-theme .profile-pic { border: 4px solid #0077b5;}
+    body.dark-theme .video-btn {
+        background-color: #0b0f14;
+        background-image: 
+            radial-gradient(at 0% 100%, rgba(0, 119, 181, 0.15) 0px, transparent 50%),
+            radial-gradient(at 100% 60%, rgba(204, 255, 0, 0.08) 0px, transparent 50%); 
+    }
+    body.dark-theme .contact-form {border: 2px solid #0077b5;;}   
