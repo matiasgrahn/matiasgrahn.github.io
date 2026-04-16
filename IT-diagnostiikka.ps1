@@ -6,6 +6,39 @@ $OS = (Get-CimInstance Win32_OperatingSystem).Caption
 $Arkkitehtuuri = $env:PROCESSOR_ARCHITECTURE
 $BootTime = (Get-CimInstance Win32_OperatingSystem).LastBootUpTime
 $Uptime = (Get-Date) - $BootTime
+# Haetaan BIOS-sarjanumero
+$TempSerial = (Get-CimInstance Win32_Bios).SerialNumber
+# Tarkistetaan onko sarjanumero tyhjä tai geneerinen "Default String" / "System Serial Number"
+if ($null -eq $TempSerial -or $TempSerial -match "Default String" -or $TempSerial -match "System Serial Number") {
+    # Jos BIOS-numero on huono, haetaan UUID
+    $FinalID = (Get-CimInstance Win32_ComputerSystemProduct).UUID
+    $IDType = "UUID" # Tallennetaan tieto kumpaa käytettiin (valinnainen)
+    } else {
+    # Jos BIOS-numero on hyvä, käytetään sitä
+    $FinalID = $TempSerial
+    $IDType = "BIOS"
+}
+
+# Haetaan asennetut ohjelmat, suodatetaan tyhjät ja sortataan aakkosjärjestykseen
+$InstalledApps = Get-ItemProperty HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\* | 
+    Where-Object { $_.DisplayName -ne $null } | 
+    Select-Object DisplayName, DisplayVersion | 
+    Sort-Object DisplayName
+# Muutetaan lista JSON-muotoon tietokantaa varten
+$AppsJson = $InstalledApps | ConvertTo-Json -Compress
+# Määritellään kriittiset ohjelmat (voit muokata näitä)
+$RequiredApps = @("Visual Studio Code", "Node.js", "Git", "Microsoft SQL Server")
+$MissingApps = @()
+$SoftwareStatus = "OK"
+foreach ($Required in $RequiredApps) {
+    # Etsitään asennettujen ohjelmien listasta (DisplayName)
+    $Found = $InstalledApps | Where-Object { $_.DisplayName -like "*$Required*" }
+    
+    if (-not $Found) {
+        $MissingApps += $Required
+        $SoftwareStatus = "Missing Components"
+    }
+}
 
 # Muotoillaan uptime
 $UptimeDisplay = "{0} pv, {1} h, {2} min" -f $Uptime.Days, $Uptime.Hours, $Uptime.Minutes
@@ -14,6 +47,11 @@ $UptimeDisplay = "{0} pv, {1} h, {2} min" -f $Uptime.Days, $Uptime.Hours, $Uptim
 Write-Host "==========================================" -ForegroundColor Gray
 Write-Host "         IT-TUEN VIANMAARITYS             " -ForegroundColor Cyan
 Write-Host "==========================================" -ForegroundColor Gray
+if ($SoftwareStatus -eq "OK") {
+    Write-Host " [OK] Kaikki kehitystyökalut asennettu." -ForegroundColor Green
+} else {
+    Write-Host " [HUOM] Puuttuvat ohjelmat: $($MissingApps -join ', ')" -ForegroundColor Yellow
+}
 Write-Host " Laitetunnus:       $Laitetunnus"
 Write-Host " Prosessori:       $Arkkitehtuuri"
 Write-Host " Kayttojarjestelma: $OS"
@@ -24,7 +62,6 @@ Write-Host " Verkkoyhteys (Ping-testi):" -ForegroundColor Cyan
 $IP = (Get-NetIPAddress -InterfaceAlias "Ethernet 4" -AddressFamily IPv4 |
 Select-Object -ExpandProperty IPAddress)
 
-Write-Host " Sisainen IP:       $IP"
 ping.exe 8.8.8.8 -n 1 | Out-Null
 if ($LASTEXITCODE -eq 0) {
     $NetStatus = "Connected"
@@ -93,8 +130,8 @@ try {
 }
 
 # Muodostetaan SQL-lause. Huom: $($Uptime.Days) varmistaa että lähtee pelkkä numero.
-$SqlQuery = "INSERT INTO SystemDiagnostics (ComputerName, Suoritin, UptimeDays, OSVersion, NetworkStatus, IP, Levytila, Paivitykset, Trendi) 
-             VALUES ('$Laitetunnus','$Arkkitehtuuri', $($Uptime.Days), '$OS', '$NetStatus', '$IP', '$VapaaGB', '$Count kpl', '$TrendiIcon')"
+$SqlQuery = "INSERT INTO SystemDiagnostics (ComputerName, Suoritin, UptimeDays, OSVersion, NetworkStatus, IP, Levytila, Paivitykset, Trendi, Sarjanumero, Tunnistetyyppi, OhjelmatJSON, SoftwareHealth) 
+             VALUES ('$Laitetunnus','$Arkkitehtuuri', $($Uptime.Days), '$OS', '$NetStatus', '$IP', '$VapaaGB', '$Count kpl', '$TrendiIcon', '$FinalID','$IDType', '$AppsJson', '$SoftwareStatus')"
 
 try {
     # Suoritetaan komento
@@ -121,4 +158,4 @@ $StatusData = [PSCustomObject]@{
 $JsonPath = Join-Path $PSScriptRoot "status.json"
 $StatusData | ConvertTo-Json | Out-File -FilePath $JsonPath -Encoding utf8 -Force
 
-Write-Host " JSON tallennettu onnistuneesti UTF-8 muodossa!" -ForegroundColor Cyan
+Write-Host " JSON tallennettu onnistuneesti UTF-8 muodossa!" -ForegroundColor Cya
