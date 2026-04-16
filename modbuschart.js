@@ -58,17 +58,17 @@ document.addEventListener('DOMContentLoaded', function() {
         else if (type === 'powershell') {
             modalTitle.innerText = "PowerShell-automaatio Demo";
             videoWrapper.style.display = "block";
-            demoGif.src = "Animaatio.gif"; // Varmista tiedostonimi ja polku
+            demoGif.src = "visuals/Animaatio.gif"; // Varmista tiedostonimi ja polku
         }
         else if (type === 'modbus-data') {
             modalTitle.innerText = "Modbus data Demo";
             videoWrapper.style.display = "block";
-            demoGif.src = "modbus_animaatio.gif"; // Varmista tiedostonimi ja polku
+            demoGif.src = "visuals/modbus_animaatio.gif"; // Varmista tiedostonimi ja polku
         }
         else if (type === 'chatbot') {
             modalTitle.innerText = "Chatbot Demo";
             videoWrapper.style.display = "block";
-            demoGif.src = "chatbot_animaatio.gif"; // Varmista tiedostonimi ja polku
+            demoGif.src = "visuals/chatbot_animaatio.gif"; // Varmista tiedostonimi ja polku
         }
     }
 
