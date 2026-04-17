@@ -5,16 +5,15 @@
 const themeToggle = document.getElementById('theme-toggle');
 const themeIcon = document.getElementById('theme-icon');
 const body = document.body;
-
 const currentTheme = localStorage.getItem('theme');
-
-
+// Navigointi ja Skrollaus
 const navLinks = document.querySelectorAll('.nav-links a, .scroll-down');
 const nav = document.querySelector('.top-nav');
-
+// Chattibotti
 const chatInput = document.getElementById('chat-input');
 const sendBtn = document.getElementById('send-btn');
 const chatMessages = document.getElementById('chat-messages');
+
 if (currentTheme) {
     body.classList.add(currentTheme);
     // Jos aiemmin tallennettu teema on dark, laitetaan kytkin "päälle"
@@ -104,10 +103,8 @@ navLinks.forEach(link => {
 let lastScrollY = window.scrollY;
 window.addEventListener('scroll', () => {
     const currentScrollY = window.scrollY;
-    // Määritetään kynnysarvo (esim. 800px tai window.innerHeight), 
-    // jonka jälkeen navigaatio ei enää palaa ylös skrollatessa.
+    // Määritetään kynnysarvo (esim. 1100px tai window.innerHeight), 
     const firstPageHeight = window.innerHeight * 0.8; 
-
     if (window.innerWidth <= 1100) {
         if (currentScrollY > firstPageHeight) {
             // Jos ollaan ekan sivun alapuolella, pidetään navi aina piilossa
@@ -128,7 +125,6 @@ window.addEventListener('scroll', () => {
 
 // SÄHKÖPOSTI FUNKTIO
 var form = document.getElementById("my-form");
-
 async function handleSubmit(event) {
     event.preventDefault();
     var button = event.target.querySelector(".btn");
@@ -137,7 +133,7 @@ async function handleSubmit(event) {
     button.disabled = true;
     button.innerHTML = "Lähetetään...";
 
-    fetch("https://formspree.io/f/xwvaepje", { // <-- VAIHDA TÄHÄN SUN KOODI
+    fetch("https://formspree.io/f/xwvaepje", {
         method: "POST",
         body: data,
         headers: {
@@ -164,11 +160,9 @@ form.addEventListener("submit", handleSubmit);
 // FUNKTIO KOODIN KOPIOMISEEN POWERSHELL.HTML
 function copyCode() {
     // Haetaan teksti elementistä, jolla on id "powershell-code"
-    
     const codeElement = document.getElementById('powershell-code');
     if (codeElement) {
         const textToCopy = codeElement.innerText;
-        
         navigator.clipboard.writeText(textToCopy).then(() => {
             // Muutetaan napin teksti hetkeksi, jotta käyttäjä näkee sen toimineen
             const copyBtn = document.querySelector('.copy-btn');
@@ -194,12 +188,10 @@ function fetchStatus() {
             const statusContent = document.getElementById('live-status-content');
             let trendiTeksti = data.Trendi;
             let vari = "inherit";
-
             const pvmObj = new Date(data.ScanDate);
             const naytettavaAika = data.ScanDate.split('T')[1].substring(0, 5); // Ottaa vain "14:17"
             const naytettavaPvm = new Date(data.ScanDate).toLocaleDateString('fi-FI');
             const lopullinenAikaleima = `${naytettavaPvm} klo ${naytettavaAika}`;
-
 
             if (trendiTeksti === "Laskussa") {
                 trendiTeksti = "⬇️ Laskussa";
@@ -226,33 +218,27 @@ function fetchStatus() {
             document.getElementById('live-status-content').innerHTML = "<p>Tilaa ei saatavilla. Odota automaattista päivitystä. </p>";
         });
 }
-
 // FUNKTIO CHATTIBOTTIIN.
 // 1. Ikkunan avaaminen ja sulkeminen (SÄILYTETÄÄN)
 function toggleChat() {
     const chatWindow = document.getElementById('chat-window');
     chatWindow.classList.toggle('chat-hidden');
 }
-
 // 2. Viestien lähettäminen ja Backend-yhteys
 async function sendMessage() {
     const text = chatInput.value.trim();
     if (!text) return;
-
     // Lisätään käyttäjän viesti näytölle
     appendMessage(text, 'user-message');
     chatInput.value = '';
-
     try {
-        // Otetaan yhteys sun eilen tehtyyn backend-palvelimeen
+        // Yhteys backend-palvelimeens
         const response = await fetch('http://localhost:3000/api/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ message: text })
         });
-
         const data = await response.json();
-
         // Lisätään Geminin vastaus näytölle
         appendMessage(data.reply, 'bot-message');
     } catch (error) {
@@ -260,7 +246,6 @@ async function sendMessage() {
         appendMessage('Hups! Yhteys palvelimeen katkesi.', 'bot-message');
     }
 }
-
 // Apufunktio viestien lisäämiseen dynaamisesti (DOM-manipulaatio)
 function appendMessage(text, className) {
     const div = document.createElement('div');
@@ -269,7 +254,6 @@ function appendMessage(text, className) {
     chatMessages.appendChild(div);
     chatMessages.scrollTop = chatMessages.scrollHeight;
 }
-
 // Tapahtumakuuntelijat (Event Listeners)
 sendBtn.addEventListener('click', sendMessage);
 
