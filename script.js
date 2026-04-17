@@ -13,7 +13,7 @@ const nav = document.querySelector('.top-nav');
 const chatInput = document.getElementById('chat-input');
 const sendBtn = document.getElementById('send-btn');
 const chatMessages = document.getElementById('chat-messages');
-
+/* --- THEME MANAGEMENT (DARK/LIGHT MODE) --- */
 if (currentTheme) {
     body.classList.add(currentTheme);
     // Jos aiemmin tallennettu teema on dark, laitetaan kytkin "päälle"
@@ -68,9 +68,6 @@ window.addEventListener('pageshow', (event) => {
         // Poistetaan mahdolliset fade-out luokat ja varmistetaan näkyvyys
         document.body.classList.remove('fade-out');
         document.body.classList.add('fade-in');
-        
-        // Jos haluat pakottaa täyden uudelleenlatauksen:
-        // window.location.reload(); 
     }
 });
 
@@ -80,16 +77,13 @@ navLinks.forEach(link => {
     link.addEventListener('click', function (e) {
         // Estetään perinteinen välitön hyppy
         e.preventDefault(); 
-
         // Haetaan kohteen ID (esim. #projektit)
         const targetId = this.getAttribute('href');
         const targetElement = document.querySelector(targetId);
-
         if (targetElement) {
             // Lasketaan navigaatiopalkin korkeus, jotta skrollaus ei peitä otsikkoa
             const navHeight = document.querySelector('.top-nav').offsetHeight;
             const targetPosition = targetElement.offsetTop - navHeight;
-
             window.scrollTo({
                 top: targetPosition,
                 behavior: 'smooth'
@@ -129,10 +123,9 @@ async function handleSubmit(event) {
     event.preventDefault();
     var button = event.target.querySelector(".btn");
     var data = new FormData(event.target);
-
+    
     button.disabled = true;
     button.innerHTML = "Lähetetään...";
-
     fetch("https://formspree.io/f/xwvaepje", {
         method: "POST",
         body: data,
