@@ -600,7 +600,7 @@ section {
     padding: 20px;
     border: 1px solid #0077b5;
     border-radius: 15px;
-    width: 80%;
+    width: 100%;
     max-width: 900px;
     max-height: 80vh;
     overflow-y: auto; /* Sallii rullauksen ikkunan sisällä */
@@ -618,9 +618,17 @@ section {
     margin-right: 15px !important;
 }
 
-.close-modal:hover {
-    color: #0077b5;
+.close-modal:hover {color: #0077b5;}
+
+.close-btn {
+     color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-right: 15px !important;
 }
+.close-btn:hover {color: #0077b5;}
 .monitoring-content {
     min-width: 70%; /* Tai haluamasi leveys */
     min-height: 500px;

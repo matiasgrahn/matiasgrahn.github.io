@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const chartWrapper = document.getElementById('chartContainer'); // Varmista että tämä ID on HTML:ssä graafin ympärillä
     const videoWrapper = document.getElementById('videoContainer'); // Varmista että tämä ID on HTML:ssä GIFin ympärillä
     const demoGif = document.getElementById('demoGif');
-    const modbusdata_demoGif = document.getElementById('modbusdata_demoGif');
-    const chatbot_demoGif = document.getElementById('chatbot_demoGif');
+    /* const modbusdata_demoGif = document.getElementById('modbusdata_demoGif');
+    const chatbot_demoGif = document.getElementById('chatbot_demoGif'); */
     const modalTitle = document.querySelector("#chartModal h2");
 
     let updateInterval;

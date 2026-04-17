@@ -117,6 +117,7 @@
     }   
     .modal-content {
         padding-top: 30px !important; /* Hallittu väli koko ikkunan yläreunaan */
+        padding-bottom: 20px !important;
     }
 /* MOBIILIOPTIMOINNIT NAVIGOINTI PALKILLE */
     .top-nav {
@@ -225,5 +226,6 @@
         width: 80px;
         height: 80px;
     }
+   
 
 }
