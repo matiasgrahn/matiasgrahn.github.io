@@ -16,8 +16,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let updateInterval;
     let myChart;
+    
 
     // Alustetaan graafi kerran (pysyy muistissa)
+    
     myChart = new Chart(ctx, {
         type: 'line',
         data: {
@@ -30,7 +32,6 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         options: { responsive: true, maintainAspectRatio: false }
     });
-
     async function updateChart() {
         try {
             const response = await fetch('http://localhost:3000/api/modbus');
@@ -46,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // YLEINEN AVAUSFUNKTIO (Tätä kutsutaan napeista)
     window.openMyModal = function(type) {
         modal.style.display = "block";
-        
+        modalTitle.style.color = "#fffefb";
         // Piilotetaan molemmat aluksi
         chartWrapper.style.display = "none";
         videoWrapper.style.display = "none";
