@@ -363,6 +363,7 @@ section {
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     border: 2px solid transparent;
+    cursor: pointer;
 }
 
 .thesis-btn:hover {
@@ -422,6 +423,16 @@ section {
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(38, 49, 112, 0.4);
 }
+
+.close-btn {
+     color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-right: 15px !important;
+}
+.close-btn:hover {color: #0077b5;}
 /* ==========================================================================
    6. TAITOPALLEROT
    ========================================================================== */
@@ -620,15 +631,6 @@ section {
 
 .close-modal:hover {color: #0077b5;}
 
-.close-btn {
-     color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-    margin-right: 15px !important;
-}
-.close-btn:hover {color: #0077b5;}
 .monitoring-content {
     min-width: 70%; /* Tai haluamasi leveys */
     min-height: 500px;

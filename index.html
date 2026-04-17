@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.3.2/css/flag-icons.min.css">
     <script src="script.js" defer></script>
     <script src="modbuschart.js"></script>
+    <script src="modaalit.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
@@ -198,7 +199,7 @@
             <div id="live-status-content">
                 <p>Updating Status...</p>
             </div>
-            <button onclick="fetchStatus()" class="copy-btn" style="margin-top:15px; width: 100%;">
+            <button onclick="fetchStatus()" class="btn" style="margin-top:15px; width: 100%;">
             <i class="fa-solid fa-rotate"></i> Update Status </button>
         </div>
 
@@ -232,7 +233,7 @@
         <div class="project-card">
             <div>
                 <h3>Industrial Data Collector & Visualizer (Python)</h3>
-                <button class="copy-btn" style="margin-top: 10px; margin-bottom: 10px; background-color: #0077b5;" onclick="openMyModal('modbus')">Open Monitoring</button>
+                <button class="btn" style="margin-top: 10px; margin-bottom: 10px; background-color: #0077b5;" onclick="openMyModal('modbus')">Open Monitoring</button>
                 <p><strong>Description:</strong><br>A Python-based solution developed for harvesting and visualizing real-time industrial data.</p>
                 <div class="project-tags">
                     <span class="tag">Python</span>
