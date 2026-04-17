@@ -7,80 +7,9 @@
             <p style="color: aliceblue;"><strong>Why this tool ?</strong>This PowerShell script was created to speed up IT support troubleshooting by retrieving critical information such as system uptime, network connection quality, disk space, and Windows Update status in a single run.</p>
 
         <section class="code-viewer-container">
-            <button class="copy-btn" onclick="copyCode()" style= "color: white; border: none; padding: 5px 12px; border-radius: 4px; cursor: pointer;">
-            Kopioi koodi
+            <button class="copy-btn" onclick="copyCode(this)" style= "color: white; border: none; padding: 5px 12px; border-radius: 4px; cursor: pointer;">
+            Copy Code
             </button>
-            <pre><code id="powershell-code">
-<span class="ps-command">Clear-Host</span>
-
-<span class="ps-comment"># 1. TIETOJEN NOUTO</span>
-<span class="ps-variable">$Laitetunnus</span> = <span class="ps-variable">$env:COMPUTERNAME</span>
-<span class="ps-variable">$OS</span> = (<span class="ps-command">Get-CimInstance</span> Win32_OperatingSystem).Caption
-<span class="ps-variable">$Arkkitehtuuri</span> = <span class="ps-variable">$env:PROCESSOR_ARCHITECTURE</span>
-<span class="ps-variable">$BootTime</span> = (<span class="ps-command">Get-CimInstance</span> Win32_OperatingSystem).LastBootUpTime
-<span class="ps-variable">$Uptime</span> = (<span class="ps-command">Get-Date</span>) - <span class="ps-variable">$BootTime</span>
-
-<span class="ps-comment"># Muotoillaan uptime siistimmaksi</span>
-<span class="ps-variable">$UptimeDisplay</span> = <span class="ps-string">"{0} pv, {1} h, {2} min"</span> -f <span class="ps-variable">$Uptime.Days</span>, <span class="ps-variable">$Uptime.Hours</span>, <span class="ps-variable">$Uptime.Minutes</span>
-
-<span class="ps-comment"># 2. TULOSTUS</span>
-<span class="ps-command">Write-Host</span> <span class="ps-string">"=========================================="</span> -ForegroundColor Gray
-<span class="ps-command">Write-Host</span> <span class="ps-string">"         IT-TUEN VIANMAARITYS             "</span> -ForegroundColor Cyan
-<span class="ps-command">Write-Host</span> <span class="ps-string">"=========================================="</span> -ForegroundColor Gray
-
-<span class="ps-command">Write-Host</span> <span class="ps-string">" Laitetunnus:       $Laitetunnus"</span>
-<span class="ps-command">Write-Host</span> <span class="ps-string">" Kayttojarjestelma: $OS"</span>
-<span class="ps-command">Write-Host</span> <span class="ps-string">" Arkkitehtuuri:     $Arkkitehtuuri"</span>
-<span class="ps-command">Write-Host</span> <span class="ps-string">" Viimeisin boot:    $($BootTime.ToString('dd.MM.yyyy HH:mm'))"</span>
-<span class="ps-command">Write-Host</span> <span class="ps-string">" Kone ollut paalla: $UptimeDisplay"</span> -ForegroundColor Yellow
-
-<span class="ps-command">Write-Host</span> <span class="ps-string">"------------------------------------------"</span> -ForegroundColor Gray
-
-<span class="ps-comment"># Verkkotesti</span>
-<span class="ps-command">Write-Host</span> <span class="ps-string">" Verkkoyhteys (Ping-testi):"</span> -ForegroundColor Cyan
-<span class="ps-variable">$IP</span> = (<span class="ps-command">Get-NetIPAddress</span> -InterfaceAlias <span class="ps-string">"Ethernet 4"</span> -AddressFamily IPv4 |
-<span class="ps-command">Select-Object</span> -ExpandProperty IPAddress)
-
-<span class="ps-command">Write-Host</span> <span class="ps-string">" Sisainen IP:       $IP"</span>
-
-<span class="ps-command">ping.exe</span> 8.8.8.8 -n 1 | <span class="ps-command">Out-Null</span>
-<span class="ps-command">if</span> (<span class="ps-variable">$?</span>) {
-    <span class="ps-command">Write-Host</span> <span class="ps-string">" Ulkoinen yhteys:   OK (8.8.8.8 vastasi)"</span> -ForegroundColor Green
-} <span class="ps-command">else</span> {
-    <span class="ps-command">Write-Host</span> <span class="ps-string">" Ulkoinen yhteys:   VIRHE (Ei vastausta)"</span> -ForegroundColor Red
-}
-
-<span class="ps-comment"># Levytila</span>
-<span class="ps-variable">$Disk</span> = <span class="ps-command">Get-CimInstance</span> Win32_LogicalDisk | <span class="ps-command">Where-Object</span> DeviceID -eq <span class="ps-string">"C:"</span>
-<span class="ps-variable">$VapaaGB</span> = [<span class="ps-command">Math</span>]::Round(<span class="ps-variable">$Disk.FreeSpace</span> / 1GB, 1)
-<span class="ps-command">Write-Host</span> <span class="ps-string">" Vapaa levytila:    $VapaaGB GB"</span> -NoNewline
-<span class="ps-command">if</span> (<span class="ps-variable">$VapaaGB</span> -lt 20) { 
-    <span class="ps-command">Write-Host</span> <span class="ps-string">" (VAROITUS!)"</span> -ForegroundColor Red 
-} <span class="ps-command">else</span> { 
-    <span class="ps-command">Write-Host</span> <span class="ps-string">" (OK)"</span> -ForegroundColor Green 
-}
-
-<span class="ps-command">Write-Host</span> <span class="ps-string">"=========================================="</span> -ForegroundColor Gray
-
-<span class="ps-comment"># WINDOWS-PÄIVITYKSET</span>
-<span class="ps-command">Write-Host</span> <span class="ps-string">" Paivitykset:       "</span> -NoNewline
-<span class="ps-command">try</span> {
-    <span class="ps-variable">$UpdateSession</span> = <span class="ps-command">New-Object</span> -ComObject Microsoft.Update.Session
-    <span class="ps-variable">$UpdateSearcher</span> = <span class="ps-variable">$UpdateSession</span>.CreateUpdateSearcher()
-    <span class="ps-variable">$SearchResult</span> = <span class="ps-variable">$UpdateSearcher</span>.Search(<span class="ps-string">"IsInstalled=0 and Type='Software' and IsHidden=0"</span>)
-    
-    <span class="ps-variable">$Count</span> = <span class="ps-variable">$SearchResult</span>.Updates.Count
-    <span class="ps-command">if</span> (<span class="ps-variable">$Count</span> -gt 0) {
-        <span class="ps-command">Write-Host</span> <span class="ps-string">"Saatavilla ($Count kpl)"</span> -ForegroundColor Yellow
-    } <span class="ps-command">else</span> {
-        <span class="ps-command">Write-Host</span> <span class="ps-string">"Ajan tasalla"</span> -ForegroundColor Green
-    }
-} <span class="ps-command">catch</span> {
-    <span class="ps-command">Write-Host</span> <span class="ps-string">"Ei voida tarkistaa juuri nyt"</span> -ForegroundColor Gray
-}
-<span class="ps-command">Write-Host</span> <span class="ps-string">"=========================================="</span> -ForegroundColor Gray
-<span class="ps-command">Write-Host</span> <span class="ps-string">"Testit suoritettu onnistuneesti."</span> -ForegroundColor Green
-<span class="ps-command">Read-Host</span> -Prompt <span class="ps-string">"`nSkripti suoritettu. Paina Enter sulkeaksesi ikkunan"</span>
-            </code></pre>
+            <pre><code id="powershell-code-display">Ladataan koodia...</code></pre>
         </section>
 

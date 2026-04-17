@@ -148,31 +148,6 @@ async function handleSubmit(event) {
 }
 form.addEventListener("submit", handleSubmit);
 
-
-
-// FUNKTIO KOODIN KOPIOMISEEN POWERSHELL.HTML
-function copyCode() {
-    // Haetaan teksti elementistä, jolla on id "powershell-code"
-    const codeElement = document.getElementById('powershell-code');
-    if (codeElement) {
-        const textToCopy = codeElement.innerText;
-        navigator.clipboard.writeText(textToCopy).then(() => {
-            // Muutetaan napin teksti hetkeksi, jotta käyttäjä näkee sen toimineen
-            const copyBtn = document.querySelector('.copy-btn');
-            const originalText = copyBtn.innerText;
-            
-            copyBtn.innerText = "Kopioitu!";
-            copyBtn.style.background = "#28a745"; // Muutetaan väri vihreäksi
-            
-            setTimeout(() => {
-                copyBtn.innerText = originalText;
-                copyBtn.style.background = "#0078d4"; // Palautetaan alkuperäinen
-            }, 2000);
-        }).catch(err => {
-            console.error('Kopiointi epäonnistui: ', err);
-        });
-    }
-}
 // FUNKTIO PoweShell datan hakuun
 function fetchStatus() {
     fetch('http://localhost:3000/api/status')

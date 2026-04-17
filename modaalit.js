@@ -19,16 +19,29 @@ const videoElement = document.getElementById('esittelyvideo');
 /* ==========================================
    FUNKTIO POWERSHELL.HTML MODAALI
    ========================================== */
+// Etsi tämä kohta modaalit.js tiedostosta
 openBtn.addEventListener("click", function(e) {
     e.preventDefault();
     
-    // Ladataan powershell.html sisältö
     fetch('powershell.html')
         .then(response => response.text())
-        .then(data => {
-            modalBody.innerHTML = data;
+        .then(html => {
+            modalBody.innerHTML = html;
             modal.style.display = "block";
-            document.body.style.overflow = "hidden"; // Estää pääsivun rullauksen
+            document.body.style.overflow = "hidden";
+
+            fetch('IT-diagnostiikka.ps1')
+    .then(res => res.text())
+    .then(code => {
+        const codeDisplay = document.getElementById('powershell-code-display');
+        if (codeDisplay) {
+            codeDisplay.textContent = code;
+            // Lisätään luokka, jotta Prisma tietää kielen
+            codeDisplay.className = "language-powershell"; 
+            // Käsketään Prismaa värittämään koodi
+            Prism.highlightElement(codeDisplay);
+        }
+    });
         });
 });
 
@@ -46,6 +59,31 @@ window.onclick = function(event) {
     }
 }
 
+function copyCode(buttonElement) {
+    // Haetaan teksti uudella ID:llä
+    const codeDisplay = document.getElementById('powershell-code-display');
+    
+    if (!codeDisplay || codeDisplay.innerText === "Ladataan koodia...") {
+        console.warn("Koodia ei ole vielä ladattu tai elementtiä ei löydy.");
+        return;
+    }
+
+    const codeText = codeDisplay.innerText;
+
+    navigator.clipboard.writeText(codeText).then(() => {
+        // Visuaalinen palaute napille
+        const originalText = buttonElement.innerText;
+        buttonElement.innerText = "Kopioitu!";
+        buttonElement.style.backgroundColor = "#28a745"; // Vihreä
+
+        setTimeout(() => {
+            buttonElement.innerText = originalText;
+            buttonElement.style.backgroundColor = ""; // Palauttaa alkuperäisen CSS:stä
+        }, 2000);
+    }).catch(err => {
+        console.error('Kopiointi epäonnistui: ', err);
+    });
+}
 /* ==========================================
    FUNKTIO THESIS_CONTENT.HTML MODAALI
    ========================================== */

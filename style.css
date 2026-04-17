@@ -491,49 +491,13 @@ section {
     margin-top: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
-
-.code-header {
-    background-color: #2d2d2d;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #3e3e3e;
-    color: #ccc;
-    font-size: 0.9rem;
-}
-
-.code-viewer-container pre {
-    padding: 20px;
-    overflow-x: auto;
-    color: #d4d4d4;
-    font-family: 'Consolas', 'Courier New', monospace;
-    font-size: 0.85rem !important;
-    line-height: 1.5;
-    text-align: left;
-}
-
-.ps-comment { color: #6a9955; font-style: italic; } /* Vihreä kommentti */
-.ps-command { color: #569cd6; font-weight: bold; } /* Sininen komento */
-.ps-variable { color: #9cdcfe; }                  /* Vaaleansininen muuttuja */
-.ps-string { color: #ce9178; }                    /* Ruskehtava teksti */
-
-.code-viewer-container pre {
-    padding: 20px;
-    margin: 0;
-    
-    /* Tämä on tärkein: sallii skrollauksen sivusuunnassa jos koodi on liian leveää */
-    overflow-x: auto; 
-    
-    /* Parantaa skrollauksen sujuvuutta kosketusnäytöillä */
-    -webkit-overflow-scrolling: touch; 
-    
-    /* Varmistaa, että pitkät sanat (kuten polut) eivät pakota laatikkoa leveäksi */
-    word-wrap: normal;
-    white-space: pre; 
-    
-    font-size: 0.9rem;
-    line-height: 1.5;
+#powershell-code-display {
+    white-space: pre-wrap;       /* Säästää välilyönnit, mutta rivittää tekstin */
+    word-wrap: break-word;       /* Katkaisee pitkät sanat tarvittaessa */
+    overflow-x: hidden;          /* Poistaa sivuttaisskrollin kokonaan */
+    display: block;
+    padding: 15px;
+    line-height: 1.5;            /* Parantaa luettavuutta rivityksen jälkeen */
 }
 
 /* ==========================================================================
