@@ -87,6 +87,14 @@
         width: 100%;                   /* Nappi täyttää silti kortin leveyden */
         text-align: center;
     }
+    .yleisnappi {
+        padding: 5px 5px !important; /* Vähemmän tyhjää tilaa napin sisällä */
+        font-size: 0.8rem !important;  /* Pienempi teksti */
+        min-height: auto !important;   /* Varmistetaan, ettei nappi pakota korkeutta */
+        margin-top: 10px;              /* Sopiva väli yläpuolella olevaan tekstiin */
+        width: 100%;                   /* Nappi täyttää silti kortin leveyden */
+        text-align: center;
+    }
 
     .linkedin-nappi i {
         font-size: 0.85rem;

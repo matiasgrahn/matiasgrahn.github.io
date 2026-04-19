@@ -47,9 +47,9 @@
         <nav class="top-nav">
         <div class="nav-container">
             <div class="nav-links">
-                <a href="#aloitus" >[0] Home</a>
+                <a href="#aloitus">[0] Home</a>
                 <a href="#profiili">[1] Profile</a>
-                <a href="#projektit" >[2] Projects</a>
+                <a href="#projektit">[2] Projects</a>
                 <a href="#dokumentit">[3] Contacts & Documents (PDF)</a>
             </div>
                 <div class="nav-center"> 
@@ -73,6 +73,7 @@
             <h1>Matias Grahn</h1>
             <p class="subtitle">IT Engineering Student | Multi-skilled Tech Enthusiast</p>
         </header>
+            <h2>[0] Home</h2>
 
         <div class="profile-header">
         <div class="profile-pic-container">
@@ -100,10 +101,10 @@
 
     <!-- SIVU 2 ALKAA TÄSTÄ -->
     <section id="profiili" class="full-page">
-        <h2>Profile</h2>
+        <h2>[1] Profile</h2>
 
         <div class="info-card">
-            <div class="description" id="ENdesc">
+            <div class="description">
                 <p>Welcome to my profile! I am a final-year IT Engineering student with a strong practical and technical background.</p>
                 <p>My expertise lies at the <strong>intersection of Information Technology, Systems Engineering, and Physical Technology.</strong>I am currently finishing my Bachelor's thesis on the cybersecurity of industrial buses (Modbus/CAN-bus). My technical background and experience with physical hardware provide me with a deep understanding of complex system architectures.</p>
                 <p>I am looking for a challenging role where I can utilize my analytical problem-solving skills and my ability to efficiently tackle diverse technical tasks.</p>
@@ -173,7 +174,7 @@
     </div>
 
     <section id="projektit" class="full-page">
-        <h2>Projects</h2>
+        <h2>[2] Projects</h2>
         <div class="info-card">
         <div>
             <p class = "kuvaus" style="margin-top: 15px;">
@@ -205,7 +206,7 @@
             <div id="live-status-content">
                 <p>Updating Status...</p>
             </div>
-            <button onclick="fetchStatus()" class="btn" style="margin-top: 10px; background-color: #0077b5;">
+            <button onclick="fetchStatus()" class="btn yleisnappi">
             <i class="fa-solid fa-rotate"></i> Update Status </button>
         </div>
 
@@ -239,7 +240,7 @@
         <div class="project-card">
             <div>
                 <h3>Industrial Data Collector & Visualizer (Python)</h3>
-                <button class="btn" style="margin-top: 10px; margin-bottom: 10px; background-color: #0077b5;" onclick="openMyModal('modbus')">Open Monitoring</button>
+                <button class="btn yleisnappi" onclick="openMyModal('modbus')">Open Monitoring</button>
                 <p><strong>Description:</strong><br>A Python-based solution developed for harvesting and visualizing real-time industrial data.</p>
                 <div class="project-tags">
                     <span class="tag">Python</span>
@@ -299,7 +300,7 @@
     <!-- SIVU 4 ALKAA TÄSTÄ --> 
     <section id="dokumentit" class="full-page">
     <div class="section-header">
-        <h2>Contacts & Documents (PDF)</h2>
+        <h2>[3] Contacts & Documents (PDF)</h2>
         <p>Do you have any questions about my thesis, or would you like to discuss potential career opportunities?</p>
     </div>
 
@@ -321,8 +322,8 @@
                 <textarea name="message" required placeholder="Type your message here..."></textarea>
             </div>
 
-            <button type="submit" class="btn">
-                <i class="fa-regular fa-paper-plane"></i> Send message
+            <button type="submit" class="btn yleisnappi" style="color: rgb(255, 255, 255);">
+                <i class="fa-regular fa-paper-plane" style="color: rgb(255, 255, 255);"></i> Send message
             </button>
             </form>
         </div>

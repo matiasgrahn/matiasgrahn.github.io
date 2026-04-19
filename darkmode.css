@@ -106,4 +106,7 @@
             radial-gradient(at 0% 100%, rgba(0, 119, 181, 0.15) 0px, transparent 50%),
             radial-gradient(at 100% 60%, rgba(204, 255, 0, 0.08) 0px, transparent 50%); 
     }
-    body.dark-theme .contact-form {border: 2px solid #0077b5;} 
+    body.dark-theme .contact-form {border: 2px solid #0077b5;}
+    body.dark-theme .thesis-btn{background-color: #0077b5;}
+    body.dark-theme .thesis-btn:hover{border-color: #0077b5; color: #0077b5 !important; box-shadow: 0 6px 20px rgba(0, 94, 181, 0.4); background-color: transparent;}
+    body.dark-theme .yleisnappi{background-color: #0077b5;} 

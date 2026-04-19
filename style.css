@@ -344,6 +344,14 @@ section {
 
 .btn:hover { transform: translateY(-2px); }
 
+.yleisnappi
+{
+    background-color: #e99d5f;
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px 10px;
+}
+
 
 .linkedin-nappi {
     background-color: #0077b5;
@@ -356,7 +364,7 @@ section {
     margin-top: 20px !important;
     margin-bottom: 20px !important;
     padding: 12px 25px;
-    background-color: #0077b5; /* LinkedIn-sininen tai portfoliosi korostusväri */
+    background-color: #e99d5f; /* LinkedIn-sininen tai portfoliosi korostusväri */
     color: white !important;
     text-decoration: none;
     border-radius: 50px; /* Pyöreät reunat */
@@ -369,10 +377,10 @@ section {
 
 .thesis-btn:hover {
     background-color: transparent;
-    border-color: #0077b5;
-    color: #0077b5 !important;
+    border-color: #e99d5f;
+    color: #e99d5f !important;
     transform: translateY(-3px); /* Nousee hieman ylös */
-    box-shadow: 0 6px 20px rgba(0, 119, 181, 0.4);
+    box-shadow: 0 6px 20px rgba(181, 97, 0, 0.4);
 }
 
 /* Lisätään nuolelle pieni liike */
@@ -728,9 +736,6 @@ section {
 .contact-card.wide i {
     color: #e99d5f;
 }
- .send-message-btn {
-    color:#2c2c2c;
- }
 
 .contact-card h3 {
     font-size: 0.9rem;

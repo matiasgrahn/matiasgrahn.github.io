@@ -86,3 +86,4 @@ document.addEventListener('DOMContentLoaded', function() {
     span.onclick = closeModal;
     window.onclick = (event) => { if (event.target == modal) closeModal(); };
 });
+
