@@ -175,7 +175,7 @@ function fetchStatus() {
                     </p> 
                     <p><strong><i class="fa-solid fa-clock"></i> Päivitetty:</strong> ${lopullinenAikaleima}</p>
                     <p><strong><i class="fa-solid fa-desktop"></i> Isäntä:</strong> ${data.ComputerName}</p>
-                    <p><strong><i class="fa-solid fa-hard-drive"></i> Vapaa tila:</strong> ${data.Levytila}</p>
+                    <p><strong><i class="fa-solid fa-hard-drive"></i> Vapaa tila:</strong> ${data.Levytila} GB</p>
                     <p><strong><i class="fa-solid fa-chart-line"></i> Levytila:</strong> <span style="color: ${vari}; font-weight: bold;">${trendiTeksti}</span></p>
                     <p><strong><i class="fa-solid fa-shield"></i> Päivitykset:</strong> ${data.Paivitykset}</p>
                 </div>
