@@ -26,8 +26,8 @@ if ($choice -eq "1") {
 } else {
     $dbServer = [System.Environment]::GetEnvironmentVariable("DB_SERVER_VM")
     $dbName = [System.Environment]::GetEnvironmentVariable("DB_NAME_VM")
-    $dbUser = [System.Environment]::GetEnvironmentVariable("DB_USER")
-    $dbPass = [System.Environment]::GetEnvironmentVariable("DB_PASS")
+    $dbUser = [System.Environment]::GetEnvironmentVariable("DB_USER_VM")
+    $dbPass = [System.Environment]::GetEnvironmentVariable("DB_PASS_VM")
     
     # Azure-yhteys VPN:n yli (10.0.0.4)
     $connectionString = "Server=$dbServer;Database=$dbName;User ID=$dbUser;Password=$dbPass;Encrypt=False;"
