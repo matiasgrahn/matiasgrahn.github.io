@@ -12,11 +12,11 @@ app.use(express.json());
 
 // --- KONFIGURAATIOT ---
 const dbConfig = {
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    server: process.env.DB_SERVER,
-    database: process.env.DB_NAME,
-    options: { encrypt: false, trustServerCertificate: true }
+    user: process.env.DB_USER_LOCAL,
+    password: process.env.DB_PASSWORD_LOCAL,
+    server: process.env.DB_SERVER_LOCAL,
+    database: process.env.DB_NAME_LOCAL,
+    options: { encrypt: true, trustServerCertificate: true}
 };
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
