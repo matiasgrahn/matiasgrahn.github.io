@@ -69,7 +69,8 @@ body.fade-out { opacity: 0; }
 .description p {
     margin-top: 15px;
     margin-bottom: 15px;
-    margin-left: 20px;    
+    margin-left: 20px;
+    margin-right:20px;    
 }
 
 .description p:last-child { margin-bottom: 0;}
