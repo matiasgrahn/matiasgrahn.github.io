@@ -117,6 +117,26 @@ window.addEventListener('scroll', () => {
     lastScrollY = currentScrollY;
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+    const mainCard = document.getElementById("profile-main-card");
+    const showSkillsBtn = document.querySelector(".show-skills-btn");
+    const hideSkillsBtn = document.querySelector(".hide-skills-btn");
+
+    // Kun klikataan "View Skills", näytetään takapuoli
+    if (showSkillsBtn && mainCard) {
+        showSkillsBtn.addEventListener("click", () => {
+            mainCard.classList.add("show-skills");
+        });
+    }
+
+    // Kun klikataan "Back to Profile", palataan etupuolelle
+    if (hideSkillsBtn && mainCard) {
+        hideSkillsBtn.addEventListener("click", () => {
+            mainCard.classList.remove("show-skills");
+        });
+    }
+});
+
 // SÄHKÖPOSTI FUNKTIO
 var form = document.getElementById("my-form");
 async function handleSubmit(event) {

@@ -446,47 +446,7 @@ section {
 /* ==========================================================================
    6. TAITOPALLEROT
    ========================================================================== */
-.skill-container { display: flex; justify-content: center; gap: 30px; margin: 20px 0; }
 
-.skill-sphere {
-    position: relative;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 1.5rem;
-    transition: transform 0.3s ease;
-    cursor: pointer;
-}
-
-.skill-sphere:hover { transform: scale(1.1); }
-.skill-sphere:nth-child(1) { background-color: #28a745; }
-.skill-sphere:nth-child(2) { background-color: #dc3545; }
-.skill-sphere:nth-child(3) { background-color: #007bff; }
-.skill-sphere:nth-child(4) { background-color: #e9ca1a; }
-.skill-popup {
-    position: absolute;
-    bottom: 80px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 200px;
-    background: #333;
-    padding: 15px;
-    border-radius: 10px;
-    font-size: 0.85rem;
-    opacity: 0;
-    visibility: hidden;
-    transition: 0.3s;
-    background: rgba(0, 0, 0, 0.733); /* Erittäin läpinäkyvä */
-    background-image: 
-    radial-gradient(at 0% 0%, rgba(0, 119, 181, 0.15) 0px, transparent 50%),
-    radial-gradient(at 100% 100%, rgba(204, 255, 0, 0.1) 0px, transparent 50%);
-}
-
-.skill-sphere:hover .skill-popup { opacity: 1; visibility: visible; }
 
 
 /* ==========================================================================
@@ -956,3 +916,95 @@ section {
     100% { transform: scale(1.5); opacity: 0; }
 }
 
+/* Pääkortin perussäädöt */
+#profile-main-card {
+    position: relative;
+    min-height: 400px; /* Pitää kortin vakaana vaihdon aikana */
+    display: block !important; /* Varmistetaan että absolute-lapset toimivat */
+    padding: 30px;
+}
+
+/* Etupuolen tyylit */
+.card-front-side {
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+/* Takapuolen tyylit - oletuksena piilossa */
+.card-back-side {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    /* Lasketaan leveys ja korkeus niin että vastaa paddingeja */
+    width: calc(100% - 60px); 
+    height: calc(100% - 60px);
+    opacity: 0;
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+/* KUN TAIDOT OVAT AKTIIVISENA (Luokka lisätään JavaScriptillä pääkortille) */
+#profile-main-card.show-skills .card-front-side {
+    opacity: 0;
+    visibility: hidden;
+}
+
+#profile-main-card.show-skills .card-back-side {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Painikkeiden asettelu */
+.profile-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.show-skills-btn, .hide-skills-btn {
+    cursor: pointer;
+}
+
+/* Takapuolen ylärivi ja ruudukko */
+.back-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+}
+.back-header h3 { margin: 0; color: #000000; }
+
+.skills-grid-inside {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+    flex-grow: 1;
+}
+
+.mini-skill-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 15px;
+}
+.mini-skill-card h4 {
+    margin: 0 0 8px 0;
+    color: #e99d5f;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.mini-skill-card p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #000000;
+    line-height: 1.4;
+}

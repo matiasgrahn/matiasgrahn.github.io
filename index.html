@@ -99,70 +99,61 @@
         
     </section>
 
-    <!-- SIVU 2 ALKAA TÄSTÄ -->
-    <section id="profiili" class="full-page">
-        <h2>[1] Profile</h2>
+ <section id="profiili" class="full-page">
+    <h2>[1] Profile</h2>
 
-        <div class="info-card">
+    <div class="info-card" id="profile-main-card">
+            
+        <div class="card-front-side">
             <div class="description">
-
-                <p>Welcome to my profile! I have graduated from Vaasa University of Applied Sciences
-                with a bachelors degree in Information Technology.</p>
-
-                <p>My expertise lies at the <strong>intersection of Information Technology, Systems Engineering, and Physical Technology.</strong>
-                I have done my Bachelor's thesis on the cybersecurity of industrial buses (Modbus/CAN-bus). My technical background and experience
-                with physical hardware provide me with a deep understanding of complex system architectures.</p>
-
-                <p>I am looking for a challenging role where I can utilize
-                my analytical problem-solving skills and my ability to efficiently tackle diverse technical tasks.</p>
-
+                <p>Welcome to my profile! I have graduated from Vaasa University of Applied Sciences with a bachelors degree in Information Technology.</p>
+                <p>My expertise lies at the <strong>intersection of Information Technology, Systems Engineering, and Physical Technology.</strong> I have done my Bachelor's thesis on the cybersecurity of industrial buses (Modbus/CAN-bus). My technical background and experience with physical hardware provide me with a deep understanding of complex system architectures.</p>
+                <p>I am looking for a challenging role where I can utilize my analytical problem-solving skills and my ability to efficiently tackle diverse technical tasks.</p>
             </div>
-            <span href="#" id="open-thesis" class="thesis-btn">Read more about my Thesis <i class="fa-solid fa-arrow-right"></i> </span>
-
-            <section class="info-card">
-            <div class="skill-container">
-                <div class="skill-sphere it">
-                    <span class="skill-icon"><i class="fas fa-laptop-code"></i></span>
-                        <div class="skill-popup">
-                            <h4>IT-Knowledge</h4>
-                            <p>Troubleshooting, Hardware, Networking, and Cybersecurity.</p>
-                        </div>
-                </div>
-
-                <div class="skill-sphere">
-                    <span class="skill-icon"><i class="fas fa-microchip"></i></span>
-                        <div class="skill-popup">
-                            <h4>Technologies</h4>
-                            <p>JavaScript, HTML/CSS, C++, Python and Modbus.</p>
-                        </div>
-                </div>
-
-                <div class="skill-sphere">
-                    <span class="skill-icon"><i class="fas fa-tools"></i></span>
-                        <div class="skill-popup">
-                            <h4>Other skills</h4>
-                            <p>Project-management, teamwork and technical documentation.</p>
-                        </div>
-                </div>
-
-                <div class="skill-sphere">
-                    <span class="skill-icon"><i class="fas fa-gamepad"></i></span>
-                        <div class="skill-popup">
-                            <h4>Hobbies</h4>
-                            <p>Bouldering, coding projects, gaming and continuos learning</p>
-                        </div>
-                </div>
-
+            
+            <div class="profile-actions">
+                <span id="open-thesis" class="thesis-btn">Read more about my Thesis <i class="fa-solid fa-arrow-right"></i></span>
+                <button class="thesis-btn show-skills-btn">View Skills & Knowledge <i class="fa-solid fa-share"></i></button>
             </div>
-            </section>  
         </div>
 
-        <a href="#projektit" class="scroll-down">
-            <div class="scroll-arrow">
-                <i class="fa-solid fa-chevron-down"></i> </div>
-        </a>     
-    </section>
+        <div class="card-back-side">
+            <div class="back-header">
+                <h3>My Skills & Expertise</h3>
+                <button class="thesis-btn hide-skills-btn"><i class="fa-solid fa-arrow-left"></i> Back to Profile</button>
+            </div>
 
+            <div class="skills-grid-inside">
+                <div class="mini-skill-card">
+                    <h4><i class="fas fa-laptop-code"></i> IT-Knowledge</h4>
+                    <p>Troubleshooting, Hardware, Networking, and Cybersecurity.</p>
+                </div>
+
+                <div class="mini-skill-card">
+                    <h4><i class="fas fa-microchip"></i> Technologies</h4>
+                    <p>JavaScript, HTML/CSS, C++, Python and Modbus.</p>
+                </div>
+
+                <div class="mini-skill-card">
+                    <h4><i class="fas fa-tools"></i> Other skills</h4>
+                    <p>Project-management, teamwork and technical documentation.</p>
+                </div>
+
+                <div class="mini-skill-card">
+                    <h4><i class="fas fa-gamepad"></i> Hobbies</h4>
+                    <p>Bouldering, coding projects, gaming and continuous learning.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <a href="#projektit" class="scroll-down">
+        <div class="scroll-arrow">
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
+    </a>     
+</section>
              
     <!-- SIVU 3 ALKAA TÄSTÄ -->
     
