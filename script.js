@@ -203,7 +203,7 @@ function fetchStatus() {
         })
         .catch(err => {
             console.error("Virhe ladattaessa JSONia:", err);
-            document.getElementById('live-status-content').innerHTML = "<p>Tilaa ei saatavilla. Odota automaattista päivitystä. </p>";
+            document.getElementById('live-status-content').innerHTML = "<p>Live-mode is currently unavailable—this feature only works locally. See GIF (PS1).</p>";
         });
 }
 // FUNKTIO CHATTIBOTTIIN.
