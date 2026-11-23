@@ -231,7 +231,7 @@ async function sendMessage() {
         appendMessage(data.reply, 'bot-message');
     } catch (error) {
         console.error('Virhe:', error);
-        appendMessage('Hups! Yhteys palvelimeen katkesi.', 'bot-message');
+        appendMessage('Live backend is currently offline (hosted locally to keep API keys secure). Try clicking one of the preset prompt buttons below, or check out the Chatbot Demo (Gif) in the Projects section!', 'bot-message');
     }
 }
 // Apufunktio viestien lisäämiseen dynaamisesti (DOM-manipulaatio)
