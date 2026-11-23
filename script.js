@@ -145,7 +145,7 @@ async function handleSubmit(event) {
     var data = new FormData(event.target);
     
     button.disabled = true;
-    button.innerHTML = "Lähetetään...";
+    button.innerHTML = "Sending...";
     fetch("https://formspree.io/f/xwvaepje", {
         method: "POST",
         body: data,
@@ -154,15 +154,15 @@ async function handleSubmit(event) {
         }
     }).then(response => {
         if (response.ok) {
-            button.innerHTML = "Viesti lähetetty!";
+            button.innerHTML = "Message Sent !";
             button.style.backgroundColor = "#28a745"; // Muuttuu vihreäksi
             form.reset();
         } else {
-            button.innerHTML = "Hups! Yritä uudelleen";
+            button.innerHTML = "Oops! Try Again";
             button.disabled = false;
         }
     }).catch(error => {
-        button.innerHTML = "Verkkovirhe";
+        button.innerHTML = "Network error";
         button.disabled = false;
     });
 }
