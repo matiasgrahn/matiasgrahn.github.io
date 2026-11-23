@@ -91,6 +91,42 @@ h2 { margin: 20px 0; }
  /* ==========================================================================
     1. Chattibotti tyylit
     ========================================================================== */
+    /* Pikakysymysnapit (demo-chip) */
+.demo-prompts-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 8px 15px;
+    background: #ffffff;
+    border-top: 1px solid #eee;
+}
+
+.demo-chip {
+    background: #f0f7ff;
+    border: 1px solid #007bff;
+    color: #007bff;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 5px 10px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+}
+
+.demo-chip:hover {
+    background: #007bff;
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+.demo-chip:active {
+    transform: translateY(0);
+}
+
+.typing-indicator {
+    opacity: 0.75;
+    font-style: italic;
+}
     /* Chat-kuplan tyylit */
 #chat-bubble {
     position: fixed;
